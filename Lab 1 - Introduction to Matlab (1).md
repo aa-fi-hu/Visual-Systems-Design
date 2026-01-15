@@ -1,28 +1,7 @@
 # Lab 1 - Introduction to Matlab
 
-**_Peter Cheung, V1.2 - 15 January 2026_**
+**15 January 2026**
 
-In this lab you will write some simple programs using MATLAB to  manipulate some 2D image data (as two-dimensional array) with simple matrix operations.  You will perform the following two geometric transformations:
-* Rotation
-* Shearing
-
----
-## Installing MATLAB
-
-If you do not have MATLAB installed on your laptop, please do so now by following instructions on this webpage:
-
-https://www.mathworks.com/login/verification/tah/new
-
----
-## Learning MATLAB Basics
-
-If you don't have prior experience with Matlab, it is worth spending a bit of time going through Matlab's tutorial. You can find it here:
-
-https://matlabacademy.mathworks.com/details/matlab-onramp/gettingstarted
-
-This may take you some effort, but you will learn very valuable skills used in many high-tech companies.
-
----
 ## Loading the test image
 
 To make things nice and easy for you we’ve given you an image to play with. The image shown below is a 200x320 grey scale image called “clown”.  Now run MATLAB on your laptop.
