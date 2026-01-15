@@ -238,7 +238,7 @@ Here’s the basics of shearing transformations:
 
 As for the image rotation, you will want to use the reverse mapping of the transform to avoid problems with holes in the image.
 
-###Solution:
+### Solution:
 #### Reverse Mapping:
 ```
 clc
