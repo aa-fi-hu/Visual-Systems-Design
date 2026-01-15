@@ -114,11 +114,58 @@ For each pixel in the destination image
 		Paint the destination pixel with that source pixel value
 	}
 ```
-
+SOlution:
+```
 >You should read the explanation above and make an attempt with your lab partner(s) to figure out how you might approach the problem.  You may then choose to write your version of the function.  If you find this too difficult, don't worry.  You have been provided with the "model solution" in this repo under the folder 'solutions'.  Make sure that you understand how the MATLAB code works.
 
+load clown;
+clown(20,319);
+function [Out] =  Rotate(In, Theta)
 
+
+In = double(In);                 % Work in double
+[h, w] = size(In);
+
+Out = zeros(h, w);               % Output image (black background)
+
+% Convert angle to radians
+theta = deg2rad(Theta);
+
+% Image center
+cx = w/2;
+cy = h/2;
+
+for y = 1:h
+    for x = 1:w
+        
+        % Coordinates relative to center
+        xr = x - cx;
+        yr = y - cy;
+        
+        % Forward mapping rotation
+        x_new =  xr*cos(theta) - yr*sin(theta);
+        y_new =  xr*sin(theta) + yr*cos(theta);
+        
+        % Back to image coordinates
+        x_new = round(x_new + cx);
+        y_new = round(y_new + cy);
+        
+        % Paint destination pixel if inside bounds
+        if x_new >= 1 && x_new <= w && y_new >= 1 && y_new <= h
+            Out(y_new, x_new) = In(y, x);
+        end
+    end
+end
+
+Out = uint8(Out*255);
+end
+
+result = Rotate(clown, 30);
+imshow(clown);
+imshow(result);
 ---
+
+```
 ## Task 2 - Image Shearing
 ---
 
