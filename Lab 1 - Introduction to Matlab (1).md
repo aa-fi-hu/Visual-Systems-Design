@@ -237,3 +237,50 @@ Here’s the basics of shearing transformations:
 <p align="center"> <img src="images/shear_plot.jpg" /> </p>
 
 As for the image rotation, you will want to use the reverse mapping of the transform to avoid problems with holes in the image.
+
+###Solution:
+#### Reverse Mapping:
+```
+clc
+clear all
+load clown;
+clown(20,319);
+function Out = Shear(In, Xshear, Yshear)
+
+In = double(In);
+[h, w] = size(In);
+
+Out = zeros(h, w);
+
+cx = w/2;
+cy = h/2;
+
+% Inverse shear matrix
+detA = 1 - Xshear * Yshear;
+Ainv = (1/detA) * [1, -Xshear;
+                  -Yshear, 1];
+
+for y = 1:h
+    for x = 1:w
+        
+        % Destination relative to center
+        xd = x - cx;
+        yd = y - cy;
+        
+        % Backward mapping
+        src = Ainv * [xd; yd];
+        
+        xs = round(src(1) + cx);
+        ys = round(src(2) + cy);
+        
+        % Copy pixel if valid
+        if xs >= 1 && xs <= w && ys >= 1 && ys <= h
+            Out(y, x) = In(ys, xs);
+        end
+    end
+end
+
+end
+imshow(clown);
+result=Shear(clown, 0.1,0.5);
+imshow(result);
