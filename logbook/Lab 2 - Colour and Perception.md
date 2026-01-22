@@ -12,6 +12,7 @@ Clone this repo to your laptop and do all your work using your local copy.
 ### Task 1 - Find your blind spot
 
 Play the video [here](http://www.ee.ic.ac.uk/pcheung/teaching/DE4_DVS/assets/blind_spot_test.mp4) and follow its instructions.  Make notes on what you found out.
+
 We found our blind spots by covering one eye and moving back forth from the screen until we were not able to see the symbol.
 
 <video src="assets/blind_spot_test.mp4" width="480" height="360" controls></video>
