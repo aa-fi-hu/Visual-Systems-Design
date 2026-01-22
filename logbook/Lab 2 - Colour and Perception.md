@@ -95,7 +95,7 @@ This phenomenon is not observed for the following image when the contrast is low
 You can find out more about this [here](https://en.wikipedia.org/wiki/Café_wall_illusion).
 
 #### Notes
-At first the brick wall seemed wobbly, but then after measuring the distance between each 2 lines they were all 1 cm away everywhere so they were straight and parallel
+At first the brick wall seemed wobbly, but then after measuring the distance between each 2 lines they were all 1 cm away everywhere so they were straight and parallel. The Café wall illusion makes straight, parallel horizontal lines appear tilted or sloped when they’re actually perfectly straight. This happens because alternating dark and light “bricks” with offset rows cause the visual system’s edge-detection signals to misinterpret the alignment — the contrast at the edges tricks the brain into perceiving a tilt that isn’t there.
 
 ### Task 8 - the Silhouette Illusion
 
