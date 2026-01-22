@@ -238,3 +238,7 @@ fprintf('Y: [%f, %f]\n', min(Y(:)), max(Y(:)));
 fprintf('Z: [%f, %f]\n', min(Z(:)), max(Z(:)));
 
 ```
+<p align="center"> <img src="Lab2assets/solutions/grayscale image.png" /> </p><BR>
+<p align="center"> <img src="Lab2assets/solutions/side by side 2x2.png" /> </p><BR>
+<p align="center"> <img src="Lab2assets/solutions/3 images rbg.png" /> </p><BR>
+<p align="center"> <img src="Lab2assets/solutions/3 images xyz.png" /> </p><BR>
