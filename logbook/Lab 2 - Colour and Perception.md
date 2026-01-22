@@ -103,11 +103,17 @@ At first the brick wall seemed wobbly, but then after measuring the distance bet
 
 <video src="assets/dancer.m4v" width="640" height="640" controls></video>
 
+#### Notes
+The Spinning Dancer illusion is a motion-based bistable image : a silhouette that can be seen rotating either clockwise or counterclockwise with no depth cues. Your brain makes a guess about the dancer’s rotation direction, and it can flip between interpretations because the 2D image doesn’t tell your visual system which way it’s actually turning.
+
 ### Task 9 - the Incomplete Triangles
 
 The last task in part 1 is to consider the picture below.  How many triangles are in the picture?  What conclusions can you draw from this observation?
 
 <p align="center"> <img src="assets/triangle.jpg" /> </p><BR>
+
+#### Notes
+The Kanizsa Triangle illusion is when you see a bright white triangle that isn’t actually drawn. Your brain fills in missing edges between the “Pac-Man” shapes and creates illusory contours. It happens because the visual system prefers simple, complete shapes, so it invents the triangle even though no real lines exist. So there is actually ZERO triangles.
 
 ---
 ## Part 2 - Exploring Colours in Matlab
