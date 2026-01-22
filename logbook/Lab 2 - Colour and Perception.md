@@ -71,7 +71,7 @@ Here is another example, where our brain see what it expects instead of what hit
 To verify the result, you need to use an image editor app and cut out one square and put it next to the other for comparison.
 
 #### Notes
-We thought that the blue table is longer than the red one but they turned out to be of same length, and similarly we thought that A is darker than B but then in the image editor they turned out to be the same colour of the following code #6F6F6F.
+We thought that the blue table is longer than the red one but they turned out to be of same length, and similarly we thought that A is darker than B but then in the image editor they turned out to be the same colour of the following code #6F6F6F. This is due to our expectations in our brain and our perception tricking us.
 
 ### Task 6 - The Grid Illusion
 
