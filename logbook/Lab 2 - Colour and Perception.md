@@ -70,6 +70,9 @@ Here is another example, where our brain see what it expects instead of what hit
 
 To verify the result, you need to use an image editor app and cut out one square and put it next to the other for comparison.
 
+#### Notes
+#6F6F6F
+
 ### Task 6 - The Grid Illusion
 
 When you stare at the centre of the grid below, you should see black dots at the intersection appearing and disappearing.  You can read more about it [here](https://en.wikipedia.org/wiki/Grid_illusion).
