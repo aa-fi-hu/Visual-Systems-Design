@@ -189,7 +189,10 @@ Finally, map the RGB image to the XYZ colour space with the **rgb2xyz( )** funct
 
 #### Notes
 X, Y, Z are not usual RGB colors; they are tristimulus values. Y relates to brightness, while X and Z combine with Y to reproduce true color in CIE 1931. Displaying them without normalization may look dark or washed out, since XYZ values can exceed 0–1.
-Full Code: 
+ 
+```
+Full Code:
+
 clear all
 clc
 imfinfo('peppers.png')
@@ -234,5 +237,4 @@ fprintf('X: [%f, %f]\n', min(X(:)), max(X(:)));
 fprintf('Y: [%f, %f]\n', min(Y(:)), max(Y(:)));
 fprintf('Z: [%f, %f]\n', min(Z(:)), max(Z(:)));
 
-
-
+```
