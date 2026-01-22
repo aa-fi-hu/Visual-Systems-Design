@@ -79,6 +79,9 @@ When you stare at the centre of the grid below, you should see black dots at the
 
 <p align="center"> <img src="assets/grid.jpg" /> </p><BR>
 
+#### Notes
+A grid illusion is an optical trick where a pattern of intersecting lines makes you see dark or flickering spots at the intersections that aren’t really there. The most famous example is the Hermann grid, where ghost-like grey blobs appear at the crossings of a light grid on a dark background but vanish when you look directly at them. This happens because of how the visual system processes contrast across the pattern, neighboring light and dark areas influence each other in the brain, creating the illusory spots.
+
 ### Task 7 - Cafe Wall Illusion
 
 Do you see the following brick wall layers are parallel?  Then measure the boundaries of each layer with a ruler.
