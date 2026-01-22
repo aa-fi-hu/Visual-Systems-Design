@@ -71,7 +71,7 @@ Here is another example, where our brain see what it expects instead of what hit
 To verify the result, you need to use an image editor app and cut out one square and put it next to the other for comparison.
 
 #### Notes
-#6F6F6F
+We thought that A is darker than B but then in the image editor they turned out to be the same colour of the following code #6F6F6F.
 
 ### Task 6 - The Grid Illusion
 
