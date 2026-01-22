@@ -186,3 +186,7 @@ montage({H,S,V}, 'Size', [1 3]))
 ### Task 13 - Map RGB image to XYZ space
 
 Finally, map the RGB image to the XYZ colour space with the **rgb2xyz( )** function.  Examine what you get and comment.
+
+#### Notes
+X, Y, Z are not usual RGB colors; they are tristimulus values. Y relates to brightness, while X and Z combine with Y to reproduce true color in CIE 1931. Displaying them without normalization may look dark or washed out, since XYZ values can exceed 0–1.
+
