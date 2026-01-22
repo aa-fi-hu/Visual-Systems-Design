@@ -35,6 +35,9 @@ You should see the American flag in the normal red, white and blue colours.
 
 Explain the reasons why this happens.
 
+Staring at the altered colors overstimulates specific cone cells in the retina. When you look away to a white surface, those cones are temporarily fatigued and respond less, so the opposing cones dominate. The brain interprets this imbalance as the complementary colors, creating a negative afterimage of the normal red, white, and blue flag.
+
+
 ### Task 4 - Troxler's Fading
 
 Here is another example to demonstrate the Opponent Process Theory.  Play the video [here](http://www.ee.ic.ac.uk/pcheung/teaching/DE4_DVS/assets/purple_dots.mp4) and follow the instruction.  
