@@ -13,6 +13,7 @@ Clone this repo to your laptop and do all your work using your local copy.
 
 Play the video [here](http://www.ee.ic.ac.uk/pcheung/teaching/DE4_DVS/assets/blind_spot_test.mp4) and follow its instructions.  Make notes on what you found out.
 
+#### Notes
 We found our blind spots by covering one eye and moving back forth from the screen until we were not able to see the symbol.
 
 <video src="assets/blind_spot_test.mp4" width="480" height="360" controls></video>
@@ -22,6 +23,9 @@ We found our blind spots by covering one eye and moving back forth from the scre
 The Ishihara test is a colour vision test designed to detect deficiencies in the long and medium cones.  It consists of one set of pictures containing colour dots with a number embedded within.  Your goal is to identify the number you see in each of them.
 
 You can start the test [here](Ishihara_test.md).
+
+#### Notes
+We are not colour blind.
 
 ### Task 3 - Reverse colour
 
@@ -35,6 +39,7 @@ You should see the American flag in the normal red, white and blue colours.
 
 Explain the reasons why this happens.
 
+#### Notes
 Staring at the altered colors overstimulates specific cone cells in the retina. When you look away to a white surface, those cones are temporarily fatigued and respond less, so the opposing cones dominate. The brain interprets this imbalance as the complementary colors, creating a negative afterimage of the normal red, white, and blue flag.
 
 
@@ -49,6 +54,9 @@ Write down in your logbook the reason of what you see.  Read the wikipedia page 
 [Here](http://www.ee.ic.ac.uk/pcheung/teaching/DE4_DVS/assets/blue_circle.mp4) is another experiment to test the phenomenon.  Play the video and comment.
 
 <video src="assets/blue_circle.mp4" width="640" height="320" controls></video>
+
+#### Notes
+
 
 ### Task 5 - Brain sees what it expects
 
