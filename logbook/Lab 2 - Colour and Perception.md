@@ -56,7 +56,7 @@ Write down in your logbook the reason of what you see.  Read the wikipedia page 
 <video src="assets/blue_circle.mp4" width="640" height="320" controls></video>
 
 #### Notes
-
+Troxler’s fading is a visual effect where unchanging stimuli in your field of view gradually disappear when you fix your gaze on a single point. This happens because neurons in your visual system adapt to constant, unvarying input and stop responding, so the brain essentially filters it out of perception. When you then look at a plain white surface, the altered color signals and this neural adaptation help produce a complementary-colored afterimage of the original image.
 
 ### Task 5 - Brain sees what it expects
 
