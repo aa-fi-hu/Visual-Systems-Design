@@ -189,4 +189,50 @@ Finally, map the RGB image to the XYZ colour space with the **rgb2xyz( )** funct
 
 #### Notes
 X, Y, Z are not usual RGB colors; they are tristimulus values. Y relates to brightness, while X and Z combine with Y to reproduce true color in CIE 1931. Displaying them without normalization may look dark or washed out, since XYZ values can exceed 0–1.
+Full Code: 
+clear all
+clc
+imfinfo('peppers.png')
+RGB = imread('peppers.png');  
+imshow(RGB)
+I = rgb2gray(RGB);
+figure              % start a new figure window
+imshow(I)
+imshowpair(RGB, I, 'montage')
+title('Original colour image (left) grayscale image (right)');
+[R,G,B] = imsplit(RGB);
+montage({R, G, B},'Size',[1 3])
+HSV = rgb2hsv(RGB);
+[H,S,V] = imsplit(HSV);
+montage({H,S,V}, 'Size', [1 3])
+
+%% Assume RGB is your input image
+% Example: RGB = imread('peppers.png');
+%% --- HSV Conversion ---
+HSV = rgb2hsv(RGB);           % Convert RGB to HSV
+[H, S, V] = imsplit(HSV);     % Split into channels
+figure('Name','HSV Channels');
+montage({H, S, V}, 'Size', [1 3]);  % Display as 1x3 montage
+title('H | S | V channels');
+
+%% --- XYZ Conversion ---
+XYZ = rgb2xyz(RGB);           % Convert RGB to XYZ
+[X, Y, Z] = imsplit(XYZ);     % Split into channels
+
+% Normalize for display (optional, keeps values between 0-1)
+X_disp = X / max(X(:));
+Y_disp = Y / max(Y(:));
+Z_disp = Z / max(Z(:));
+
+figure('Name','XYZ Channels');
+montage({X_disp, Y_disp, Z_disp}, 'Size', [1 3]);  % Display as 1x3 montage
+title('X | Y | Z channels');
+
+%% --- Optional: inspect raw values ---
+disp('XYZ channel ranges:');
+fprintf('X: [%f, %f]\n', min(X(:)), max(X(:)));
+fprintf('Y: [%f, %f]\n', min(Y(:)), max(Y(:)));
+fprintf('Z: [%f, %f]\n', min(Z(:)), max(Z(:)));
+
+
 
