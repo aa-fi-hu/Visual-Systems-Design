@@ -176,6 +176,9 @@ subplot(1,3,2); imhist(g);
 subplot(1,3,3); imhist(h);
 ```
 
+#### Answers
+<p align="center"> <img src="Lab3assets/contrast enhancement.png" /> </p><BR>
+
 ## Task 4 - Noise reduction with lowpass filter
 
 In Lecture 5, we consider a variety of special filter kernels, including: Averaging (box), Gaussian, Laplacian and Sobel. In this task, you will explore the effect of each of this on an image.  In this task, you will explore two type of smoothing filter - the moveing average (box) filter and the Gaussian filter.
@@ -213,6 +216,9 @@ Comment on the results.
 
 >Test yourself: Explore various kernel size and sigma value for these two filters. Comment on the trade-off between the choice of these parameters and the effect on the image.
 
+#### Answers
+<p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
+
 ## Task 5 - Median Filtering
 
 In both cases with Average and Gaussian filters, noise reduction is companied by reducing in the sharpness of the image.  Median filter provides a better solution if sharpness is to be preserved.  Matlab provides the function _medfilt2(I, [m n], padopt)_ for such an operation.  [m n] defines the kernel dimension. _padopt_ specifies the padding option at the boundaries.  Default is 'zero', which means it is zero-padded.
@@ -224,9 +230,15 @@ figure; montage({f, g_median})
 ```
 Comment on the results.
 
+#### Answers
+<p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
+
 ## Task 6 - Sharpening the image with Laplacian, Sobel and Unsharp filters
 
 Now that you are familiar with the Matlab functions _fspecial_ and _imfilter_, explore with various filter kernels to sharpen the moon image stored in the file _moon.tif_. The goal is to make the moon photo sharper so that the craters can be observed better.
+
+#### Answers
+<p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
 
 ## Task 7 - Test yourself Challenges
 
@@ -235,3 +247,8 @@ Now that you are familiar with the Matlab functions _fspecial_ and _imfilter_, e
 * Use the Sobel filter in combination with any other techniques, find the edge of the circles in the image file _circles.tif_.  You are encouraged to discuss and work with your classmates and compare results.
 
 * _office.jpg_ is a colour photograph taken of an office with badd exposure.  Use whatever means at your disposal to improve the lighting and colour of this photo.
+
+#### Answers
+<p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
+
+## Entire Code
