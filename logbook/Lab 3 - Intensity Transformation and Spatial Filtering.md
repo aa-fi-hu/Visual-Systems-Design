@@ -255,7 +255,7 @@ Comment on the results.
 
 #### Answers
 <p align="center"> <img src="Lab3assets/5.png" /> </p><BR>
-
+```
 Comment: Less sharp, more smooth.
 
 ## Task 6 - Sharpening the image with Laplacian, Sobel and Unsharp filters
@@ -264,6 +264,82 @@ Now that you are familiar with the Matlab functions _fspecial_ and _imfilter_, e
 
 #### Answers
 <p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
+
+clear; close all; clc;
+
+% Load image
+f = imread('moon.tif');
+f = im2double(f);
+
+% Show original
+figure;
+imshow(f);
+title('Original Moon Image');
+
+%% 1) Unsharp masking exploration
+radii = [0.5 1 2 3];
+amounts = [0.5 1 1.5 2];
+
+for i = 1:length(radii)
+    for j = 1:length(amounts)
+        sharpened = imsharpen(f, 'Radius', radii(i),'Amount', amounts(j));
+
+        figure;
+        imshow(sharpened);
+        title(sprintf('Unsharp Masking | Radius = %.1f , Amount = %.1f',radii(i), amounts(j)));
+    end
+end
+
+
+%% 2) Spatial sharpening with different kernels
+kernels(:,:,1) = [ 0 -1  0
+                  -1  5 -1
+                   0 -1  0];
+
+kernels(:,:,2) = [-1 -1 -1
+                  -1  9 -1
+                  -1 -1 -1];
+
+kernels(:,:,3) = [ 0 -1  0
+                  -1  7 -1
+                   0 -1  0];
+
+for i = 1:size(kernels,3)
+    g = imfilter(f, kernels(:,:,i), 'replicate');
+
+    figure;
+    imshow(g);
+    title(['Sharpening Kernel ' num2str(i)]);
+end
+
+
+%% 3) Laplacian sharpening
+laplacian_kernels(:,:,1) = [ 0 -1  0
+                            -1  4 -1
+                             0 -1  0];
+
+laplacian_kernels(:,:,2) = [-1 -1 -1
+                            -1  8 -1
+                            -1 -1 -1];
+
+for i = 1:size(laplacian_kernels,3)
+    edges = imfilter(f, laplacian_kernels(:,:,i), 'replicate');
+    sharpened = f + edges;
+
+    figure;
+    imshow(sharpened, []);
+    title(['Laplacian Sharpening ' num2str(i)]);
+end
+
+
+%% 4) Final comparison (best example)
+best = imsharpen(f, 'Radius', 2, 'Amount', 1.5);
+
+figure;
+imshowpair(f, best, 'montage');
+title('Original (left) vs Sharpened (right)');
+
+```
 
 ## Task 7 - Test yourself Challenges
 
