@@ -263,9 +263,7 @@ Comment: Less sharp, more smooth.
 Now that you are familiar with the Matlab functions _fspecial_ and _imfilter_, explore with various filter kernels to sharpen the moon image stored in the file _moon.tif_. The goal is to make the moon photo sharper so that the craters can be observed better.
 
 #### Answers
-<p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
 
-...
 ```
 clear; close all; clc;
 
@@ -342,6 +340,7 @@ imshowpair(f, best, 'montage');
 title('Original (left) vs Sharpened (right)');
 
 ```
+<p align="center"> <img src="Lab3assets/sharpening kernel 2.png" /> </p><BR>
 
 ## Task 7 - Test yourself Challenges
 
