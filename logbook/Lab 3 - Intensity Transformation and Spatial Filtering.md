@@ -68,8 +68,8 @@ _g3_ uses gamma correct with gamma = 2.0 as shown in the diagram below. [ ] is t
 This produces a result similar to that of g2 by compressing the low end and expanding the high end of the gray scale.  It however, unlike g2,  retains more of the details because the intensity now covers the entire gray scale range.  _function montage_ stitches together images in the list specified within { }.
 
 #### Answers
-<p align="center"> <img src="Lab3assets/negative.jpg" /> </p><BR>
-<p align="center"> <img src="Lab3assets/gamma.jpg" /> </p><BR>
+<p align="center"> <img src="Lab3assets/negative.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/gamma.png" /> </p><BR>
 
 ## Task 2: Contrast-stretching transformation
 
