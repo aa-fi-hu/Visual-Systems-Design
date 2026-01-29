@@ -265,6 +265,8 @@ Now that you are familiar with the Matlab functions _fspecial_ and _imfilter_, e
 #### Answers
 <p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
 
+...
+```
 clear; close all; clc;
 
 % Load image
