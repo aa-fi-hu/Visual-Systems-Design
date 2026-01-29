@@ -177,7 +177,9 @@ subplot(1,3,3); imhist(h);
 ```
 
 #### Answers
-<p align="center"> <img src="Lab3assets/contrast enhancement.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/1.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/2.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/hist.png" /> </p><BR>
 
 ## Task 4 - Noise reduction with lowpass filter
 
