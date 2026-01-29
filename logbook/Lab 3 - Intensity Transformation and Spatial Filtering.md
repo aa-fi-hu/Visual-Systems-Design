@@ -254,7 +254,9 @@ figure; montage({f, g_median})
 Comment on the results.
 
 #### Answers
-<p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/5.png" /> </p><BR>
+
+Comment: Less sharp, more smooth.
 
 ## Task 6 - Sharpening the image with Laplacian, Sobel and Unsharp filters
 
