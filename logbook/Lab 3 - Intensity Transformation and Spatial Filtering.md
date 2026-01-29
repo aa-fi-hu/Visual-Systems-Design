@@ -102,6 +102,11 @@ The intensity values of s are normalized to the range of [0.0 1.0] and is in typ
 
 Discuss the results with your classmates and record your observations in your logbook.
 
+#### Answers
+<p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
+
+Observation: The image has a low dynamic range, where most pixels are crowded into a narrow band of dark gray levels, making structural details hard to see. Contrast stretching expands these intensity levels to occupy the full range from pure black to pure white, as seen in the right image. This process significantly improves visual clarity, making features like the ribs, spine, and joints much more distinct for analysis. We are also able to see outer body form beyond the skeleton.
+
 ## Task 3: Contrast Enhancement using Histogram
 
 ### PLotting the histogram of an image
