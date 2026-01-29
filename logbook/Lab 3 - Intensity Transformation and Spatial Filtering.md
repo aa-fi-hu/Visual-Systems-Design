@@ -223,8 +223,23 @@ Comment on the results.
 >Test yourself: Explore various kernel size and sigma value for these two filters. Comment on the trade-off between the choice of these parameters and the effect on the image.
 
 #### Test Answers:
-<p align="center"> <img src="Lab3assets/4-1.png" /> </p><BR>
-<p align="center"> <img src="Lab3assets/4-2.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/4-3.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/4-4.png" /> </p><BR>
+
+Box filter (average filter)
+- Small kernel sizes (3×3, 5×5) slightly reduce noise while keeping most edges visible -> clear
+- Larger kernels (9×9, 15×15) produce stronger smoothing but significantly blur edges and fine details -> blurry
+> Conclusion: better for mild noise reduction, but quickly destroys image structure as size increases.
+
+Gaussian filter
+- Low σ values (0.5, 1) provide light smoothing with good detail preservation -> sharper
+- Higher σ values (2, 4) increase noise suppression but progressively blur edges -> more blurry
+> Compared to the box filter, the Gaussian filter produces more natural smoothing and fewer artifacts.
+
+Overall trade-off
+- Increasing kernel size or σ improves noise removal but reduces sharpness and detail.
+- There is a clear trade-off between noise reduction and edge preservation.
+- Gaussian filtering is generally preferable because it balances smoothing and detail better than the box filter.
 
 
 ## Task 5 - Median Filtering
