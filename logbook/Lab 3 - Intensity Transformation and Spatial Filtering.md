@@ -63,7 +63,7 @@ _g2_ has the gray scale range between 0.5 and 0.75 mapped to the full range.
 
 _g3_ uses gamma correct with gamma = 2.0 as shown in the diagram below. [ ] is the same as [0 1] by default.
 
-<p align="center"> <img src="..Lab3assets/gamma.jpg" /> </p><BR>
+<p align="center"> <img src="Lab3assets/gamma.jpg" /> </p><BR>
 
 This produces a result similar to that of g2 by compressing the low end and expanding the high end of the gray scale.  It however, unlike g2,  retains more of the details because the intensity now covers the entire gray scale range.  _function montage_ stitches together images in the list specified within { }.
 
@@ -75,7 +75,7 @@ This produces a result similar to that of g2 by compressing the low end and expa
 
 Instead of using the *_imadjust function_*, we will apply the constrast stretching transformation function in Lecture 4 slide 4 to improve the contrast of another X-ray image.  The transformation function is as shown here:
 
-<p align="center"> <img src="assets/stretch.jpg" /> </p><BR>
+<p align="center"> <img src="Lab3assets/stretch.jpg" /> </p><BR>
 
 The equation of this function is:
 
@@ -177,7 +177,7 @@ In Lecture 5, we consider a variety of special filter kernels, including: Averag
 
 Before filtering operation can be performed, we need to define our filter kernel.  Matlab provides a function called _fspecial_, which returns different types of filter kernels.  The table below shows the types of kernels that can generated.
 
-<p align="center"> <img src="assets/fspecial.jpg" /> </p><BR>
+<p align="center"> <img src="Lab3assets/fspecial.jpg" /> </p><BR>
 
 Import an X-ray image of a printed circuit board.
 
