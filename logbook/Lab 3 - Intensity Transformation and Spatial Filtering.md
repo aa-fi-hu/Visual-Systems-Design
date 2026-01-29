@@ -216,10 +216,16 @@ montage({f, g_box, g_gauss})
 ```
 Comment on the results.  
 
+#### Answers
+<p align="center"> <img src="Lab3assets/4-1.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/4-2.png" /> </p><BR>
+
 >Test yourself: Explore various kernel size and sigma value for these two filters. Comment on the trade-off between the choice of these parameters and the effect on the image.
 
-#### Answers
-<p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
+#### Test Answers:
+<p align="center"> <img src="Lab3assets/4-1.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/4-2.png" /> </p><BR>
+
 
 ## Task 5 - Median Filtering
 
