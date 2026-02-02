@@ -473,5 +473,5 @@ end
 
 
 ```
-<p align="center"> <img src="Lab3assets/circles_detcted.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/circles_detected.png" /> </p><BR>
 ## Entire Code
