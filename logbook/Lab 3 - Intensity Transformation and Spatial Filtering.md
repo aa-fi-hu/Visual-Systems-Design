@@ -419,34 +419,29 @@ f = imread('circles.tif');
 if ndims(f) == 3, f = rgb2gray(f); end
 f = im2double(f);
 
-% Use a medium blur—too much blur creates those 'ghost' circles in the grain
-f_smooth = imgaussfilt(f, 1.2);
+% Light smoothing to suppress grain while keeping white circle edges sharp
+f_smooth = imgaussfilt(f, 0.7);
 
-%% 2. Precise Circle Detection
-% 'PhaseCode' is more robust against noise than the default 'TwoStage'
-% We use a higher EdgeThreshold to ignore the faint wood grain entirely
-[centers, radii, metric] = imfindcircles(f_smooth, [22 45], ...
+%% 2. High-Sensitivity Circle Detection
+% I adjusted the radius range to [18 35] to better match the coins.
+% Using 'Sensitivity' 0.96 to ensure the faint white circles are caught.
+[centers, radii, metric] = imfindcircles(f_smooth, [18 35], ...
     'ObjectPolarity', 'dark', ...
     'Method', 'PhaseCode', ...
-    'Sensitivity', 0.92, ...
-    'EdgeThreshold', 0.15);
+    'Sensitivity', 0.96, ...
+    'EdgeThreshold', 0.05);
 
-%% 3. Manual Pen Exclusion Zone
-% Based on your image, the pen is roughly in the bottom-left corner.
-% We filter out any circle centers that fall inside that rectangle.
-% Format: [x_min, y_min, x_max, y_max]
-pen_zone = [0, 350, 300, 600]; 
+%% 3. Quality Filtering (The Pen Killer)
+% 'metric' measures circularity. Real circles have high scores; 
+% the pen and grain have very low scores. 0.15 is a strong threshold.
+qualityIdx = metric > 0.15;
 
-validIdx = ~(centers(:,1) > pen_zone(1) & centers(:,1) < pen_zone(3) & ...
-             centers(:,2) > pen_zone(2) & centers(:,2) < pen_zone(4));
+centers = centers(qualityIdx, :);
+radii = radii(qualityIdx);
+metric = metric(qualityIdx);
 
-centers = centers(validIdx, :);
-radii = radii(validIdx);
-metric = metric(validIdx);
-
-%% 4. Clean Up Overlaps
-% If two circles are nearly on top of each other, keep only the stronger one.
-% This prevents the "double red lines" seen in your last image.
+%% 4. Overlap Cleaner
+% Prevents double-outlines on overlapping coins.
 if ~isempty(centers)
     [centers, radii] = sizeFilter(centers, radii, metric);
 end
@@ -454,16 +449,21 @@ end
 %% 5. Display Result
 figure;
 imshow(f); hold on;
+% Draw the detected boundaries
 viscircles(centers, radii, 'EdgeColor', 'r', 'LineWidth', 1.5);
-title(['Final Count: ', num2str(length(radii)), ' Circles (Pen & Noise Removed)']);
 
-% --- Helper Function to handle overlaps ---
+title(['Detected Circles: ', num2str(length(radii))]);
+
+% --- Helper Function to handle overlapping detections ---
 function [c, r] = sizeFilter(centers, radii, metric)
     keep = true(length(radii), 1);
     for i = 1:length(radii)
+        if ~keep(i), continue; end
         for j = i+1:length(radii)
+            if ~keep(j), continue; end
             dist = norm(centers(i,:) - centers(j,:));
-            if dist < 15 % If centers are too close, they are the same circle
+            % If centers are closer than 15 pixels, they are the same coin
+            if dist < 15 
                 if metric(i) > metric(j), keep(j) = false; else keep(i) = false; end
             end
         end
@@ -471,6 +471,7 @@ function [c, r] = sizeFilter(centers, radii, metric)
     c = centers(keep, :); r = radii(keep);
 end
 
+
 ```
-<p align="center"> <img src="Lab3assets/circles_detected.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/circles_detcted.png" /> </p><BR>
 ## Entire Code
