@@ -351,6 +351,7 @@ title('Original (left) vs Sharpened (right)');
 * _office.jpg_ is a colour photograph taken of an office with badd exposure.  Use whatever means at your disposal to improve the lighting and colour of this photo.
 
 #### Answers
+Task 7-1
 ```
 
 clear; close all; clc;
@@ -407,6 +408,69 @@ end
 
 
 ```
-<p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
+<p align="center"> <img src="Lab3assets/lake&tree_improved_contrast.png" /> </p><BR>
 
+Task 7-2
+```
+clear; close all; clc;
+
+%% 1. Load and Prepare
+f = imread('circles.tif');
+if ndims(f) == 3, f = rgb2gray(f); end
+f = im2double(f);
+
+% Use a medium blur—too much blur creates those 'ghost' circles in the grain
+f_smooth = imgaussfilt(f, 1.2);
+
+%% 2. Precise Circle Detection
+% 'PhaseCode' is more robust against noise than the default 'TwoStage'
+% We use a higher EdgeThreshold to ignore the faint wood grain entirely
+[centers, radii, metric] = imfindcircles(f_smooth, [22 45], ...
+    'ObjectPolarity', 'dark', ...
+    'Method', 'PhaseCode', ...
+    'Sensitivity', 0.92, ...
+    'EdgeThreshold', 0.15);
+
+%% 3. Manual Pen Exclusion Zone
+% Based on your image, the pen is roughly in the bottom-left corner.
+% We filter out any circle centers that fall inside that rectangle.
+% Format: [x_min, y_min, x_max, y_max]
+pen_zone = [0, 350, 300, 600]; 
+
+validIdx = ~(centers(:,1) > pen_zone(1) & centers(:,1) < pen_zone(3) & ...
+             centers(:,2) > pen_zone(2) & centers(:,2) < pen_zone(4));
+
+centers = centers(validIdx, :);
+radii = radii(validIdx);
+metric = metric(validIdx);
+
+%% 4. Clean Up Overlaps
+% If two circles are nearly on top of each other, keep only the stronger one.
+% This prevents the "double red lines" seen in your last image.
+if ~isempty(centers)
+    [centers, radii] = sizeFilter(centers, radii, metric);
+end
+
+%% 5. Display Result
+figure;
+imshow(f); hold on;
+viscircles(centers, radii, 'EdgeColor', 'r', 'LineWidth', 1.5);
+title(['Final Count: ', num2str(length(radii)), ' Circles (Pen & Noise Removed)']);
+
+% --- Helper Function to handle overlaps ---
+function [c, r] = sizeFilter(centers, radii, metric)
+    keep = true(length(radii), 1);
+    for i = 1:length(radii)
+        for j = i+1:length(radii)
+            dist = norm(centers(i,:) - centers(j,:));
+            if dist < 15 % If centers are too close, they are the same circle
+                if metric(i) > metric(j), keep(j) = false; else keep(i) = false; end
+            end
+        end
+    end
+    c = centers(keep, :); r = radii(keep);
+end
+
+```
+<p align="center"> <img src="Lab3assets/circles_detected.png" /> </p><BR>
 ## Entire Code
