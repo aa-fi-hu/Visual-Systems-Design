@@ -351,6 +351,62 @@ title('Original (left) vs Sharpened (right)');
 * _office.jpg_ is a colour photograph taken of an office with badd exposure.  Use whatever means at your disposal to improve the lighting and colour of this photo.
 
 #### Answers
+```
+
+clear; close all; clc;
+
+%% Load grayscale image
+f = imread('lake&tree.png');
+f = im2double(f);
+
+figure;
+imshow(f);
+title('Original Grayscale Image');
+
+%% Parameter sets to explore
+clipLimits = [0.005 0.01 0.02];
+tileGrids  = [4 4;
+              8 8;
+              16 16];
+
+gammas = [0.6 0.8 1.0];
+
+radius = 1.5;
+amount = 1.0;
+
+%% Loop over contrast enhancement options
+for i = 1:length(clipLimits)
+    for j = 1:size(tileGrids,1)
+        for k = 1:length(gammas)
+
+            % ---- CLAHE ----
+            g1 = adapthisteq(f, ...
+                'ClipLimit', clipLimits(i), ...
+                'NumTiles', tileGrids(j,:));
+
+            % ---- Gamma correction ----
+            g2 = imadjust(g1, [], [], gammas(k));
+
+            % ---- Final sharpening ----
+            final = imsharpen(g2, ...
+                'Radius', radius, ...
+                'Amount', amount);
+
+            % ---- Display ----
+            figure;
+            imshow(final);
+            title(sprintf(['CLAHE: Clip=%.3f | Tiles=%dx%d | ' ...
+                           'Gamma=%.1f'], ...
+                           clipLimits(i), ...
+                           tileGrids(j,1), tileGrids(j,2), ...
+                           gammas(k)));
+        end
+    end
+end
+
+
+
+```
 <p align="center"> <img src="Lab3assets/contrast-stretching.png" /> </p><BR>
 
 ## Entire Code
