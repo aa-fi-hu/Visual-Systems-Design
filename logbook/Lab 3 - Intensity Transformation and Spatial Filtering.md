@@ -408,6 +408,7 @@ end
 
 
 ```
+<p align="center"> <img src="Lab3assets/lake&tree_original.png" /> </p><BR>
 <p align="center"> <img src="Lab3assets/lake&tree_improved_contrast.png" /> </p><BR>
 
 Task 7-2
