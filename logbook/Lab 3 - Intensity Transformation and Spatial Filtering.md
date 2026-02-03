@@ -408,8 +408,11 @@ end
 
 
 ```
-<p align="center"> <img src="Lab3assets/lake&tree_original.png" /> </p><BR>
-<p align="center"> <img src="Lab3assets/lake&tree_improved_contrast.png" /> </p><BR>
+<p align="center">
+  <img src="Lab3assets/lake&tree_original.png" width="45%" />
+  <img src="Lab3assets/lake&tree_improved_contrast.png" width="44.5%" />
+</p>
+<BR>
 
 Task 7-2
 ```
@@ -471,8 +474,6 @@ function [c, r] = sizeFilter(centers, radii, metric)
     end
     c = centers(keep, :); r = radii(keep);
 end
-
-
 ```
 <p align="center"> <img src="Lab3assets/circles_detected.png" /> </p><BR>
 ## Entire Code
