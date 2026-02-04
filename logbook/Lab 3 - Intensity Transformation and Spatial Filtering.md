@@ -1,9 +1,6 @@
 # Lab 3 - Intensity Transformation and Spatial Filtering
-*_Peter Cheung, version 1.2, 29 Jan 2026_*
 
-This lab session aims to demonstrate the topics covered in Lectures 4 and 5 using Matlab.  The choice of Matlab is driven by their excellent set of functions included in the Image Processing Toolbox.  As Design Engineers, it is more important for you to understand the principles and then use ready-made libraries to perform processing on visual data, than to write low-level code to implement the algorithms.
-
-Clone this repo to your laptop and do all your work using your local copy.  Remember to keep a log of your work in your repo.
+**29 January 2026**
 
 ## Task 1 - Contrast enhancement with function imadjust
 
