@@ -1,6 +1,7 @@
 # Lab 2 - Colour and Perception
 
 **22 January 2026**
+
 ---
 ## Part 1 - Seeing Colours and Shapes
 ---
