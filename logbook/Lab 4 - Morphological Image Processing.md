@@ -1,6 +1,6 @@
 # Lab 4 - Morphological Image Processing
 
-** 5 Feb 2026 **
+**5 February 2026**
 
 ## Task 1: Dilation and Erosion
 
