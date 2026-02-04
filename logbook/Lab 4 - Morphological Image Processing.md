@@ -1,10 +1,6 @@
 # Lab 4 - Morphological Image Processing
-*_Peter Cheung, version 1.3, 5 Feb 2026_*
 
-
-In this laboratory session, you will explore the use of various morphological operators and get a feel of how they modify visual information.  
-
-As before, clone this repository to your laptop and keep your experimental logbook on your repo.  Some students add their results, observations, reflections, etc. directly onto the README.md file.  This turns the Lab Instruction into their logbook.  Clever move!
+** 5 Feb 2026 **
 
 ## Task 1: Dilation and Erosion
 
