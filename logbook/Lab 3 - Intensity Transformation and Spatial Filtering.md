@@ -351,7 +351,7 @@ title('Original (left) vs Sharpened (right)');
 * _office.jpg_ is a colour photograph taken of an office with badd exposure.  Use whatever means at your disposal to improve the lighting and colour of this photo.
 
 #### Answers
-Task 7-1
+##### Task 7-1
 ```
 
 clear; close all; clc;
@@ -414,7 +414,7 @@ end
 </p>
 <BR>
 
-Task 7-2
+##### Task 7-2
 ```
 clear; close all; clc;
 
@@ -477,7 +477,7 @@ end
 ```
 <p align="center"> <img src="Lab3assets/circles_detected.png" /> </p><BR>
 
-Task 7-3
+##### Task 7-3
 
 ```
 % 1. Load the original image
@@ -514,4 +514,3 @@ subplot(1,2,1); imshow(img); title('Original');
 subplot(1,2,2); imshow(final_office); title('Final Result');
 ```
 <p align="center"> <img src="Lab3assets/7-3.png" /> </p><BR>
-## Entire Code
