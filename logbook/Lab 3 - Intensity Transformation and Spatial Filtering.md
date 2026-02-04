@@ -477,35 +477,32 @@ end
 ##### Task 7-3
 
 ```
-% 1. Load the original image
+% Load  original image
 img = imread('office.jpg');
 img_double = im2double(img);
 
-% 2. Improve Lighting: LAB Luminance Equalization (Task 2)
-% Instead of RGB, we use LAB to change brightness without messing up colors.
+% Improve Lighting: LAB Luminance Equalization
 lab_img = rgb2lab(img_double);
 L = lab_img(:,:,1);
 
-% Apply CLAHE with a VERY low ClipLimit to prevent grain (Task 2)
-% This fixes the exposure while keeping it looking natural.
+% CLAHE with low ClipLimit to prevent grain, fixes the exposure while keeping it looking natural
 L_enhanced = adapthisteq(L/100, 'ClipLimit', 0.005, 'NumTiles', [8 8]) * 100;
 lab_img(:,:,1) = L_enhanced;
 exposure_fixed = lab2rgb(lab_img);
 
-% 3. Improve Color: Saturation and Tint Balance
+% Improve Color: Saturation and Tint Balance
 % Use imadjust on the whole image to stretch the contrast (Task 1)
 % This removes the "bad exposure" haze and makes colors pop.
 color_fixed = imadjust(exposure_fixed, stretchlim(exposure_fixed), []);
 
-% 4. Smooth out Noise: Selective Gaussian Blur (Task 4)
-% We use a small sigma to remove the "horrible" grain without blurring edges.
+% Smooth out Noise: Selective Gaussian Blur, small sigma to remove the "horrible" grain without blurring edges
 final_office = imgaussfilt(color_fixed, 0.5);
 
-% 5. Sharpness: Subtle High-boost (Task 6)
+% Sharpness
 % We add a tiny bit of sharpness back to the smoothed image for definition.
 final_office = imsharpen(final_office, 'Radius', 1, 'Amount', 0.8);
 
-% Display comparison
+% Display
 figure;
 subplot(1,2,1); imshow(img); title('Original');
 subplot(1,2,2); imshow(final_office); title('Final Result');
