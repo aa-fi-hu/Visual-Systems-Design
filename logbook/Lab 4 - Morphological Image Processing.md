@@ -6,7 +6,7 @@
 
 Matlab provides a collection of morphological functions.  Here is a list of them:
 
-<p align="center"> <img src="assets/morphological_operators.jpg" /> </p>
+<p align="center"> <img src="Lab4assets/morphological_operators.jpg" /> </p>
 
 ### Dilation Operation
 ```
@@ -39,7 +39,7 @@ For spatial filtering, we used function _fspecial_ to generate our filter kernel
 
 Here is a list of SE that _strel_ can generate:
 
-<p align="center"> <img src="assets/strel.jpg" /> </p>
+<p align="center"> <img src="Lab4assets/strel.jpg" /> </p>
 
 For example, to generate a disk with radius r = 4:
 
@@ -93,7 +93,7 @@ Finally, compare morphological filtering using Open + Close to spatial filter wi
 
 The grayscale image 'blobs.tif' consists of blobs or bubbles of different sizes in a sea of noise. Further, the bubbles are dark, while the background is white.  The goal of this task is to find the boundaries of the blobs using the boundary operator (Lecture 6, slide 17).
 
-<p align="center"> <img src="assets/blobs.jpg" /> </p>
+<p align="center"> <img src="Lab4assets/blobs.jpg" /> </p>
 
 First we turn this "inverted" grayscale image into a binary image with white objects (blobs) and black background. Do the following:
 
@@ -124,7 +124,7 @@ where *_f_* is the input binary image, *_operation_* is a string specifying the 
 
 The morphological operations supported by _bwmorph_ are:
 
-<p align="center"> <img src="assets/bwmorph.jpg" /> </p>
+<p align="center"> <img src="Lab4assets/bwmorph.jpg" /> </p>
 
 To test function *_bwmorph_* on thinning operation, do the following:
 
@@ -143,7 +143,7 @@ In processing and interpreting an image, it is often required to find objects in
 
 Below is a text image containing many characters.  The goal is to find the **largest connected component** in this image, and then **erase it**.
 
-<p align="center"> <img src="assets/text.png" /> </p>
+<p align="center"> <img src="Lab4assets/text.png" /> </p>
 
 This sounds like a very complex task. Fortunately Matlab provides in their Toolbox the function _bwconncomp_ which performs the morphological operation described in Lecture 6 slides 22 - 24. Try the following Matlab script:
 
@@ -155,7 +155,7 @@ CC = bwconncomp(t)
 
 *_CC_* is a data structure returned by *_bwconncomp_* as described below.
 
-<p align="center"> <img src="assets/cc.jpg" /> </p>
+<p align="center"> <img src="Lab4assets/cc.jpg" /> </p>
 
 To determine which is the largest component in the image and then erase it (i.e. set all pixels within that componenet to 0), do this:
 
