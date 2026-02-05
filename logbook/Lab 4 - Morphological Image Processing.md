@@ -330,6 +330,64 @@ title('Original | Thin 1 | Thin 2 | Thin 3 | Thin 4 | Thin 5');
 
 Comment: Thinning progressively reduces ridge thickness; using n = Inf produces the full skeleton with 1-pixel-wide ridges while preserving connectivity.
 
+##### Code 2nd part
+```
+% Thinning fingerprint image with black ridges on white background
+
+clear all
+close all
+
+% Read fingerprint image
+f = imread('fingerprint-noisy.tif');
+
+% Convert to grayscale if needed
+if ndims(f) == 3
+    f = rgb2gray(f);
+end
+
+% Convert to double for thresholding
+f = im2double(f);
+
+% Binarize using Otsu's method
+level = graythresh(f);
+BW = imbinarize(f, level);
+
+% Perform thinning
+g1 = bwmorph(BW, 'thin', 1);
+g2 = bwmorph(BW, 'thin', 2);
+g3 = bwmorph(BW, 'thin', 3);
+g4 = bwmorph(BW, 'thin', 4);
+g5 = bwmorph(BW, 'thin', 5);
+g_inf = bwmorph(BW, 'thin', Inf);
+
+% Convert logical images to uint8 for proper display
+BW_disp    = uint8(BW) * 255;
+g1_disp    = uint8(g1) * 255;
+g2_disp    = uint8(g2) * 255;
+g3_disp    = uint8(g3) * 255;
+g4_disp    = uint8(g4) * 255;
+g5_disp    = uint8(g5) * 255;
+g_inf_disp = uint8(g_inf) * 255;
+
+% Invert to get black ridges on white background
+BW_disp    = 255 - BW_disp;
+g1_disp    = 255 - g1_disp;
+g2_disp    = 255 - g2_disp;
+g3_disp    = 255 - g3_disp;
+g4_disp    = 255 - g4_disp;
+g5_disp    = 255 - g5_disp;
+g_inf_disp = 255 - g_inf_disp;
+
+% Display comparison
+figure;
+montage({ BW_disp, g5_disp, g_inf_disp}, 'Size', [1 3]);
+title('Original | Thin 4 | Thin 5 | Thin Inf (Skeleton)');
+
+```
+<p align="center"> <img src="Lab4assets/4-3.jpeg" /> </p>
+
+Comment: Thinning reduces ridge thickness progressively until a 1-pixel-wide skeleton is reached. Thickening would do the opposite — it expands ridges back toward their original width. Thus, thinning and thickening are complementary operations: one removes pixels to reduce width, the other adds pixels to restore it.
+
 
 ## Task 5 - Connected Components and labels
 
