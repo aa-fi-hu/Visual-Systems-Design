@@ -430,6 +430,39 @@ These few lines of code introduce you to some cool features in Matlab.
 
 5. Once this index is found, we have identified the largest connect component.  Using this index information, we can retrieve the list of pixel coordinates for this component in **_CC.PixelIdxList_**.
 
+#### Answers
+<p align="center"> <img src="Lab4assets/5.jpeg" /> </p>
+
+##### Code
+```
+% Clear workspace and close figures
+clear all
+close all
+
+% Read the image
+t = imread('text.png');
+
+% Store original image for comparison
+t_orig = t;
+
+% Find connected components
+CC = bwconncomp(t);
+
+% Get the number of pixels in each component
+numPixels = cellfun(@numel, CC.PixelIdxList);
+
+% Find the largest component
+[biggest, idx] = max(numPixels);
+
+% Remove all other components (set them to 0)
+t(CC.PixelIdxList{idx}) = 0;
+
+% Display original and edited images side by side as a montage
+figure;
+montage({t_orig, t}, 'Size', [1 2]);
+title('Original | Largest Component Only');
+```
+
 ## Task 6 - Morphological Reconstruction
 
 In morphological opening, erosion typlically removes small objects, and subsequent dilation tends to restore the shape of the objects that remains.  However, the accuracy of this restoration relies on the similarly between the shapes to be restored and the structuring element.
@@ -466,6 +499,45 @@ ff = imfill(f);
 figure
 montage({f, ff})
 ```
+
+#### Answers
+<p align="center"> <img src="Lab4assets/6-1.jpeg" /> </p>
+
+##### Code
+```
+% Task 6 - Morphological Reconstruction
+
+clear all
+close all
+
+% Read binary text image
+f = imread('text_bw.tif');
+
+% Ensure it's logical
+f = logical(f);
+
+% Create structuring element (17 pixels tall, 1 wide) for vertical features
+se = ones(17,1);
+
+% Step 1: Find marker by erosion
+g = imerode(f, se);
+
+% Step 2: Perform opening for comparison
+fo = imopen(f, se);
+
+% Step 3: Perform morphological reconstruction
+fr = imreconstruct(g, f);
+
+% Display mask, marker, open result, and reconstructed result
+figure;
+montage({f, g, fo, fr}, "Size", [2 2]);
+title('Mask f | Marker g | Open fo | Reconstructed fr');
+```
+Comment: 
+> f (Mask) – Original image with all text characters.
+> g (Marker) – Only regions where the vertical structure is ≥17 pixels tall remain; smaller or short letters are mostly gone.
+> fo (Opening) – Similar to marker but distorts or shrinks remaining letters because dilation cannot fully restore the original shapes.
+> fr (Reconstructed) – Restores the original shapes of long vertical letters accurately, keeping them intact while removing short letters.
 
 ## Task 7 - Morphological Operations on Grayscale images
 
