@@ -126,6 +126,8 @@ title('Original | Eroded | Eroded+Dilated | Opened');
 
 ```
 
+<p align="center"> <img src="Lab4assets/tsk2.png" /> </p>
+
 Original image (f):
 The fingerprint contains salt-and-pepper–type noise and small spurious pixels that interfere with ridge continuity.
 
