@@ -241,7 +241,7 @@ Overall trade-off
 
 ## Task 5 - Median Filtering
 
-In both cases with Average and Gaussian filters, noise reduction is companied by reducing in the sharpness of the image.  Median filter provides a better solution if sharpness is to be preserved.  Matlab provides the function _medfilt2(I, [m n], padopt)_ for such an operation.  [m n] defines the kernel dimension. _padopt_ specifies the padding option at the boundaries.  Default is 'zero', which means it is zero-padded.
+In both cases with Average and Gaussian filters, noise reduction is companied by reducing in the sharpness of the image.  Median filter provides a better solution if ness is to be preserved.  Matlab provides the function _medfilt2(I, [m n], padopt)_ for such an operation.  [m n] defines the kernel dimension. _padopt_ specifies the padding option at the boundaries.  Default is 'zero', which means it is zero-padded.
 
 Try this:
 ```
@@ -252,7 +252,7 @@ Comment on the results.
 
 #### Answers
 <p align="center"> <img src="Lab3assets/5.png" /> </p><BR>
-```
+
 Comment: Less sharp, more smooth.
 
 ## Task 6 - Sharpening the image with Laplacian, Sobel and Unsharp filters
