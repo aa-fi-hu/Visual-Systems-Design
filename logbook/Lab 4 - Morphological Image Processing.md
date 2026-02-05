@@ -190,11 +190,48 @@ BW = imbinarize(I, level);
 ```
 The Matlab function  _graythresh_ computes a global threshold _level_ from the grayscale image I, by finding a threshold that minimizes the variance of the thresholded black and white pixels. (This method is known as the [Otsu's method](https://cw.fel.cvut.cz/b201/_media/courses/a6m33bio/otsu.pdf).)  The function *_imbinarize_* turns the grayscale image to a binary image **BW**: those pixels above or equal to _level_ are made foreground (i.e. 1), otherwise they are background (0).
 
+
 Now, use the boundary operation to compute the boundaries of the blobs. This is achieved by eroding BW  with SE, where SE is a 3x3 elements of 1's. The eroded image is subtract from BW. 
 
 Diplay as montage {I, BW, erosed BW and boundary detected image}.  Comment on the result.
 
 How can you improve on this result?
+
+#### Result
+<p align="center"> <img src="Lab4assets/3.png" /> </p>
+
+Comment: The boundary operation successfully extracts the outer contours of the blobs, but the detected boundaries are thick and slightly irregular. Small blobs and noise also produce boundaries, and some edges appear fragmented due to the discrete nature of erosion with a square structuring element.
+
+Improvement: The result can be improved by removing small noisy blobs before boundary extraction and by using a smoother structuring element (e.g. a disk) to obtain thinner, more regular boundaries.
+
+##### Code
+```
+clear all
+close all
+
+% Read and invert image
+I = imread('blobs.tif');
+I = imcomplement(I);
+
+% Binarization using Otsu
+level = graythresh(I);
+BW = imbinarize(I, level);
+
+% Structuring element (3x3 ones)
+SE = strel('square', 3);
+
+% Erosion
+BW_eroded = imerode(BW, SE);
+
+% Boundary extraction
+boundary = BW - BW_eroded;
+
+% Display results
+figure;
+montage({I, BW, BW_eroded, boundary}, 'Size', [1 4]);
+title('Inverted Grayscale | Binary | Eroded Binary | Blob Boundaries');
+
+```
 
 ## Task 4 - Function bwmorph - thinning and thickening
 
