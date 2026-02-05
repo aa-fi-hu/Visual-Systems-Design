@@ -742,6 +742,73 @@ title('Original | Bottom-hat | Cleaned Lines | Final Main Lines');
 
 3. The file _'assets/normal-blood.png'_ is a microscope image of red blood cells. Using various techniques you have learned, write a Matlab .m script to count the number of red blood cells.
 
+#### Answers
+<p align="center"> <img src="Lab4assets/ch3.jpeg" /> </p>
+
+##### Code
+```
+clear; close all; clc;
+
+%% 1. Load and Prepare
+% Load the blood cell image
+f = imread('normal-blood.png');
+if ndims(f) == 3
+    f_gray = rgb2gray(f); 
+else
+    f_gray = f;
+end
+f_gray = im2double(f_gray);
+
+% Blood cells can be noisy; a slightly stronger blur helps imfindcircles
+f_smooth = imgaussfilt(f_gray, 1.5);
+
+%% 2. High-Sensitivity Circle Detection
+% Radius range [25 55] is typical for this image resolution.
+% Sensitivity is bumped to 0.92 to catch cells with softer edges.
+[centers, radii, metric] = imfindcircles(f_smooth, [35 65], ...
+    'ObjectPolarity', 'dark', ... 
+    'Method', 'TwoStage', ... % TwoStage is often more robust for biological shapes
+    'Sensitivity', 0.92);
+
+%% 3. Quality Filtering
+% Lowered threshold slightly as cells aren't perfect geometric circles
+qualityIdx = metric > 0.1;
+
+centers = centers(qualityIdx, :);
+radii = radii(qualityIdx);
+metric = metric(qualityIdx);
+
+%% 4. Overlap Cleaner
+if ~isempty(centers)
+    [centers, radii] = sizeFilter(centers, radii, metric);
+end
+
+%% 5. Display Result
+figure;
+imshow(f); hold on;
+% Draw blue circles for better contrast against the pink/red cells
+viscircles(centers, radii, 'EdgeColor', 'b', 'LineWidth', 1.5);
+
+title(['Detected Red Blood Cells: ', num2str(length(radii))]);
+
+% --- Helper Function ---
+function [c, r] = sizeFilter(centers, radii, metric)
+    keep = true(length(radii), 1);
+    for i = 1:length(radii)
+        if ~keep(i), continue; end
+        for j = i+1:length(radii)
+            if ~keep(j), continue; end
+            dist = norm(centers(i,:) - centers(j,:));
+            % If centers are very close, keep the one with the higher metric score
+            if dist < 20 
+                if metric(i) > metric(j), keep(j) = false; else keep(i) = false; end
+            end
+        end
+    end
+    c = centers(keep, :); r = radii(keep);
+end
+```
+
 ---
 ## DRAW Week Assessment
 ---
