@@ -149,6 +149,13 @@ Opening produces a cleaner fingerprint with reduced noise while preserving the m
 
 As the structuring element size increases, noise is increasingly removed, but important fingerprint details such as thin ridges and bifurcations are also lost. Small structuring elements (e.g. 3×3) provide the best compromise between noise suppression and preservation of ridge structure, while larger sizes lead to excessive smoothing.
 
+
+####
+<p align="center"> <img src="Lab4assets/closed.png" /> </p>
+
+A larger, disk-shaped structuring element was used for the closing operation to better reconnect broken fingerprint ridges, as a 3×3 square produced minimal visible improvement after opening.
+
+
 ## Task 3 - Boundary detection 
 
 The grayscale image 'blobs.tif' consists of blobs or bubbles of different sizes in a sea of noise. Further, the bubbles are dark, while the background is white.  The goal of this task is to find the boundaries of the blobs using the boundary operator (Lecture 6, slide 17).
