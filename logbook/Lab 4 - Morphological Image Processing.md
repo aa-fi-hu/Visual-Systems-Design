@@ -98,6 +98,47 @@ Improve the image _fo_ with a close operation.
 
 Finally, compare morphological filtering using Open + Close to spatial filter with a **Gaussian filter**. Comment on your comparison.
 
+#### Answers
+
+```
+% Read the noisy fingerprint image
+f = imread('fingerprint-noisy.tif');
+
+% Make sure it's binary (in case it's not already logical)
+f = logical(f);
+
+% Generate a 3x3 structuring element
+SE = strel('square', 3);
+
+% Erosion
+fe = imerode(f, SE);
+
+% Dilation of eroded image
+fed = imdilate(fe, SE);
+
+% Opening (erosion followed by dilation)
+fo = imopen(f, SE);
+
+% Display results as a 4-image montage
+figure;
+montage({f, fe, fed, fo}, 'Size', [1 4]);
+title('Original | Eroded | Eroded+Dilated | Opened');
+
+```
+
+Original image (f):
+The fingerprint contains salt-and-pepper–type noise and small spurious pixels that interfere with ridge continuity.
+
+Eroded image (fe):
+Erosion removes small bright noise effectively, but it also thins the fingerprint ridges and may break weak connections between them. Fine ridge details are partially lost.
+
+Eroded + Dilated image (fed):
+Dilation restores some of the ridge thickness removed by erosion. However, the result is not identical to the original, since noise removed during erosion is not recovered. Ridge gaps caused by erosion may remain.
+
+Opened image (fo):
+Opening produces a cleaner fingerprint with reduced noise while preserving the main ridge structure. Compared to simple erosion, opening gives a better balance between noise removal and shape preservation, which is why it is preferred in practice.
+
+
 ## Task 3 - Boundary detection 
 
 The grayscale image 'blobs.tif' consists of blobs or bubbles of different sizes in a sea of noise. Further, the bubbles are dark, while the background is white.  The goal of this task is to find the boundaries of the blobs using the boundary operator (Lecture 6, slide 17).
