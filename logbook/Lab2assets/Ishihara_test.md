@@ -50,6 +50,6 @@ The pictures (called plates) are shown below from 1 to 12.  Identify the number 
 
 #### Plate 12:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_12.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_12.jpg" /> </p><BR>
 
 
