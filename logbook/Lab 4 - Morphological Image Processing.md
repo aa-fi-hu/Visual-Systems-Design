@@ -266,7 +266,7 @@ clear all
 close all
 
 % Read fingerprint image
-f = imread('fingerprint.tif');
+f = imread('fingerprint-noisy.tif');
 
 % Convert to grayscale if needed
 if ndims(f) == 3
@@ -301,7 +301,7 @@ clear all
 close all
 
 % Read fingerprint image
-f = imread('fingerprint.tif');
+f = imread('fingerprint-noisy.tif');
 
 % Convert to grayscale if needed
 if ndims(f) == 3
