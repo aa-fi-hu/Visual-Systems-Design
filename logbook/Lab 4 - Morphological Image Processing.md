@@ -18,7 +18,7 @@ A1 = imdilate(A, B1);
 montage({A,A1})
 ```
 #### Result
-<p align="center"> <img src="Lab4assets/D1.png" /> </p>
+<p align="center"> <img src="Lab4assets/D0.png" /> </p>
 
 > Change the structuring element (SE) to all 1's.  Instead of enumerating it, you can do that with the function _ones_:
 ```
