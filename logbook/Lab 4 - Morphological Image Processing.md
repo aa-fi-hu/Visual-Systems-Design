@@ -500,7 +500,7 @@ figure
 montage({f, ff})
 ```
 
-#### Answers
+#### Answer 1st Part
 <p align="center"> <img src="Lab4assets/6-1.jpeg" /> </p>
 
 ##### Code
@@ -539,6 +539,42 @@ Comment:
 > fo (Opening) – Similar to marker but distorts or shrinks remaining letters because dilation cannot fully restore the original shapes.
 > fr (Reconstructed) – Restores the original shapes of long vertical letters accurately, keeping them intact while removing short letters.
 
+
+#### Answer 2nd part
+<p align="center"> <img src="Lab4assets/6-2.jpeg" /> </p>
+
+##### Code
+```
+task 6-2: %% Task 6 - Morphological Reconstruction + Filling Holes in Letters
+clear all
+close all
+
+%% Read binary text image
+f = imread('text_bw.tif');
+f = logical(f);  % ensure binary
+
+%% Morphological Reconstruction
+% Structuring element for vertical features (17 pixels tall)
+se = ones(17,1);
+
+% Marker image by erosion
+g  = imerode(f, se);
+fo = imopen(f, se);
+fr = imreconstruct(g, f);
+
+%% Fill holes inside letters
+% Only fills interior holes of objects, not background
+ff = imfill(f, 'holes');
+
+%% Display all results
+figure;
+subplot(2,3,1); imshow(f);  title('Original f');
+subplot(2,3,2); imshow(g);  title('Marker g (eroded)');
+subplot(2,3,3); imshow(fo); title('Open fo');
+subplot(2,3,4); imshow(fr); title('Reconstructed fr');
+subplot(2,3,5); imshow(ff); title('Holes filled in letters (ff)');
+```
+
 ## Task 7 - Morphological Operations on Grayscale images
 
 So far, we have only been using binary images because they vividly show the effect of morphological operations, turning black pixels to white pixels insted of just change the shades of gray.
@@ -558,11 +594,109 @@ montage({f, gd, ge, gg}, 'size', [2 2])
 ```
 Comments on the results.
 
+#### Answers
+<p align="center"> <img src="Lab4assets/7.jpeg" /> </p>
+
+##### Code
+```
+%% Task 7 - Morphological Operations on Grayscale Images
+clear all; close all;
+
+% Read grayscale image
+f = imread('headCT.tif');
+
+% Structuring element: 3x3 square
+se = strel('square',3);
+
+% Grayscale dilation
+gd = imdilate(f, se);
+
+% Grayscale erosion
+ge = imerode(f, se);
+
+% Morphological gradient (difference between dilation and erosion)
+gg = gd - ge;
+
+% Display results as montage
+figure;
+montage({f, gd, ge, gg}, 'size', [2 2]);
+title('Original f | Dilation gd | Erosion ge | Gradient gg');
+```
+Comment: 
+> f (Original) – the original CT head image in grayscale.
+> gd (Dilation) – brightens high-intensity regions; dark regions shrink. Edges of bright areas grow outward.
+> ge (Erosion) – darkens regions; bright areas shrink and edges recede.
+> gg (Gradient = gd - ge) – highlights edges and transitions; you can see sharp boundaries clearly, similar to an edge-detection effect.
+
+
+
 ## Challenges
 
 You may like to attemp one or more of the following challenges. Unlike tasks in this Lab where you were guided with clear instructions, you are required to find your solutions yourself based on what you have learned so far.  
 
 1. The grayscale image file _'assets/fillings.tif'_ is a dental X-ray corrupted by noise.  Find how many fills this patient has and their sizes in number of pixels.
+
+#### Answers
+<p align="center"> <img src="Lab4assets/ch1.jpeg" /> </p>
+
+##### Code
+```
+%% Challenge: Count dental fillings and measure their sizes
+clear all; close all;
+
+% Read the noisy dental X-ray
+f = imread('fillings.tif');
+
+% Convert to grayscale if needed
+if ndims(f) == 3
+    f = rgb2gray(f);
+end
+
+% Step 1: Denoise image
+% Use median filter to reduce noise while keeping edges
+f_denoise = medfilt2(f, [3 3]);
+
+% Step 2: Binarize to detect fillings
+% Fillings are typically brighter than surrounding teeth
+level = graythresh(f_denoise);  % Otsu's threshold
+BW = imbinarize(f_denoise, level);
+
+% Step 3: Optional - clean small noise
+BW_clean = bwareaopen(BW, 50); % remove small blobs smaller than 50 pixels
+
+% Step 4: Label connected components
+CC = bwconncomp(BW_clean);
+
+% Step 5: Count number of fillings
+num_fillings = CC.NumObjects;
+
+% Step 6: Compute sizes (number of pixels)
+sizes = cellfun(@numel, CC.PixelIdxList);
+
+% Display results
+fprintf('Number of fillings detected: %d\n', num_fillings);
+fprintf('Sizes of fillings (in pixels): \n');
+disp(sizes);
+
+% Step 7: Visualize fillings overlayed on the original
+figure;
+imshow(f); hold on;
+
+% Create labeled mask to overlay
+labeled = labelmatrix(CC);
+RGB = label2rgb(labeled, 'jet', 'k', 'shuffle'); % color each filling
+
+% Overlay transparency
+h = imshow(RGB);
+set(h, 'AlphaData', 0.5);
+title('Detected Fillings Overlay');
+```
+Result: 
+Number of fillings detected: 6
+Sizes of fillings (in pixels): 
+      188623         306         421      229571          56         751
+
+>>
 
 2. The file _'assets/palm.tif'_ is a palm print image in grayscale. Produce an output image that contains the main lines without all the underlining non-characteristic lines.
 
