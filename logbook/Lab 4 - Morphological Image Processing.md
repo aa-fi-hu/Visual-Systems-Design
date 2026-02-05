@@ -198,7 +198,7 @@ Diplay as montage {I, BW, erosed BW and boundary detected image}.  Comment on th
 How can you improve on this result?
 
 #### Result
-<p align="center"> <img src="Lab4assets/3.png" /> </p>
+<p align="center"> <img src="Lab4assets/3.jpeg" /> </p>
 
 Comment: The boundary operation successfully extracts the outer contours of the blobs, but the detected boundaries are thick and slightly irregular. Small blobs and noise also produce boundaries, and some edges appear fragmented due to the discrete nature of erosion with a square structuring element.
 
