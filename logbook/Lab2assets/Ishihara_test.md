@@ -4,35 +4,35 @@ The pictures (called plates) are shown below from 1 to 12.  Identify the number 
 
 #### Plate 1:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_01.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_01.jpg" /> </p><BR>
 
 #### Plate 2:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_02.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_02.jpg" /> </p><BR>
 
 #### Plate 3:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_03.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_03.jpg" /> </p><BR>
 
 #### Plate 4:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_04.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_04.jpg" /> </p><BR>
 
 #### Plate 5:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_05.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_05.jpg" /> </p><BR>
 
 #### Plate 6:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_06.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_06.jpg" /> </p><BR>
 
 #### Plate 7:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_07.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_07.jpg" /> </p><BR>
 
 #### Plate 8:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_08.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_08.jpg" /> </p><BR>
 
 #### Plate 9:
 
@@ -40,12 +40,12 @@ The pictures (called plates) are shown below from 1 to 12.  Identify the number 
 
 #### Plate 10:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_10.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_10.jpg" /> </p><BR>
 
 
 #### Plate 11:
 
-<p align="center"> <img src="assets/Lab2assets/Ishihara_11.jpg" /> </p><BR>
+<p align="center"> <img src="Ishihara_11.jpg" /> </p><BR>
 
 
 #### Plate 12:
