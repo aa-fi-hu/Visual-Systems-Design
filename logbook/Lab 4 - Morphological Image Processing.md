@@ -141,6 +141,11 @@ Opened image (fo):
 Opening produces a cleaner fingerprint with reduced noise while preserving the main ridge structure. Compared to simple erosion, opening gives a better balance between noise removal and shape preservation, which is why it is preferred in practice.
 
 
+####
+<p align="center"> <img src="Lab4assets/diff sizes.png" /> </p>
+
+As the structuring element size increases, noise is increasingly removed, but important fingerprint details such as thin ridges and bifurcations are also lost. Small structuring elements (e.g. 3×3) provide the best compromise between noise suppression and preservation of ridge structure, while larger sizes lead to excessive smoothing.
+
 ## Task 3 - Boundary detection 
 
 The grayscale image 'blobs.tif' consists of blobs or bubbles of different sizes in a sea of noise. Further, the bubbles are dark, while the background is white.  The goal of this task is to find the boundaries of the blobs using the boundary operator (Lecture 6, slide 17).
