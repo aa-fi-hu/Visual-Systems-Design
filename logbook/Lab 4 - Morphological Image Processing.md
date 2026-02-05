@@ -155,6 +155,10 @@ As the structuring element size increases, noise is increasingly removed, but im
 
 A larger, disk-shaped structuring element was used for the closing operation to better reconnect broken fingerprint ridges, as a 3×3 square produced minimal visible improvement after opening.
 
+####
+<p align="center"> <img src="Lab4assets/compare.png" /> </p>
+
+The Open + Close morphological filtering preserves fingerprint ridge structure and reconnects broken lines, while Gaussian filtering smooths noise but blurs ridge edges and reduces structural clarity after thresholding.
 
 ## Task 3 - Boundary detection 
 
