@@ -63,6 +63,10 @@ SE.Neighborhood         % print the SE neighborhood contents
 _strel_ returns not a matrix, but an internal data structure called _strel_. This speeds up the execution of the morphological functions by Matlab.
 
 
+#### Answer
+
+<p align="center"> <img src="Lab4assets/1-4.png" /> </p>
+
 ### Erosion Operation
 
 Explore erosion with the following:
