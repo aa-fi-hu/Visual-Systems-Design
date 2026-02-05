@@ -17,6 +17,8 @@ B1 = [0 1 0;
 A1 = imdilate(A, B1);
 montage({A,A1})
 ```
+#### Result
+<p align="center"> <img src="Lab4assets/D1.jpg" /> </p>
 
 > Change the structuring element (SE) to all 1's.  Instead of enumerating it, you can do that with the function _ones_:
 ```
@@ -24,6 +26,10 @@ B2 = ones(3,3);     % generate a 3x3 matrix of 1's
 ```
 
 > Try making the SE larger.
+
+#### Result
+<p align="center"> <img src="Lab4assets/D1.jpg" /> </p>
+
 > Try to make the SE diagonal cross:
 ```
 Bx = [1 0 1;
@@ -32,6 +38,9 @@ Bx = [1 0 1;
 ```
 
 > What happens if you dilate the original image with B1 twice (or more times)?
+
+#### Result
+<p align="center"> <img src="Lab4assets/D1.jpg" /> </p>
 
 ### Generation of structuring element
 
