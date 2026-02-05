@@ -197,7 +197,7 @@ Diplay as montage {I, BW, erosed BW and boundary detected image}.  Comment on th
 
 How can you improve on this result?
 
-#### Result
+#### Answers
 <p align="center"> <img src="Lab4assets/3.jpeg" /> </p>
 
 Comment: The boundary operation successfully extracts the outer contours of the blobs, but the detected boundaries are thick and slightly irregular. Small blobs and noise also produce boundaries, and some edges appear fragmented due to the discrete nature of erosion with a square structuring element.
@@ -256,6 +256,80 @@ To test function *_bwmorph_* on thinning operation, do the following:
 What will happen if you keep thinning the image?  Try thinning with *_n = inf_*.  (_inf_ is reserved word in Matlab which means infinity.  However, for _bwmorph_, it means repeat the function until the image stop changing.)
 
 Modify your matlab code so that the fingerprint is displayed black lines on white background instead of white on black.  What conclusion can you draw about the relationship between thinning and thickening?
+
+#### Answers
+##### Code 1st part
+```
+% Thinning using bwmorph
+
+clear all
+close all
+
+% Read fingerprint image
+f = imread('fingerprint.tif');
+
+% Convert to grayscale if needed
+if ndims(f) == 3
+    f = rgb2gray(f);
+end
+
+% Convert to binary (same method as previous task)
+f = im2double(f);
+level = graythresh(f);
+BW = imbinarize(f, level);
+
+% Thinning operations
+g1 = bwmorph(BW, 'thin', 1);
+g2 = bwmorph(BW, 'thin', 2);
+g3 = bwmorph(BW, 'thin', 3);
+g4 = bwmorph(BW, 'thin', 4);
+g5 = bwmorph(BW, 'thin', 5);
+
+% Display comparison
+figure;
+montage({BW, g1, g2, g3, g4, g5}, 'Size', [1 6]);
+title('Original | Thin 1 | Thin 2 | Thin 3 | Thin 4 | Thin 5');
+
+```
+<p align="center"> <img src="Lab4assets/4-1.jpeg" /> </p>
+
+##### Code 2nd part
+```
+% Thinning using bwmorph
+
+clear all
+close all
+
+% Read fingerprint image
+f = imread('fingerprint.tif');
+
+% Convert to grayscale if needed
+if ndims(f) == 3
+    f = rgb2gray(f);
+end
+
+% Convert to binary (same method as previous task)
+f = im2double(f);
+level = graythresh(f);
+BW = imbinarize(f, level);
+
+% Thinning operations
+g1 = bwmorph(BW, 'thin', 1);
+g2 = bwmorph(BW, 'thin', 2);
+g3 = bwmorph(BW, 'thin', 3);
+g4 = bwmorph(BW, 'thin', 4);
+g5 = bwmorph(BW, 'thin', 5);
+
+% Display comparison
+figure;
+montage({BW, g1, g2, g3, g4, g5}, 'Size', [1 6]);
+title('Original | Thin 1 | Thin 2 | Thin 3 | Thin 4 | Thin 5');
+
+```
+<p align="center"> <img src="Lab4assets/4-2.jpeg" /> </p>
+
+Comment: Thinning progressively reduces ridge thickness; using n = Inf produces the full skeleton with 1-pixel-wide ridges while preserving connectivity.
+
 
 ## Task 5 - Connected Components and labels
 
