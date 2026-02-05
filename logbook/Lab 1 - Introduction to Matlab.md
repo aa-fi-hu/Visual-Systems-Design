@@ -6,7 +6,7 @@
 
 To make things nice and easy for you we’ve given you an image to play with. The image shown below is a 200x320 grey scale image called “clown”.  Now run MATLAB on your laptop.
 
-<p align="center"> <img src="../images/clown.jpg" /> </p>
+<p align="center"> <img src="Lab1assets/clown.jpg" /> </p>
 To load the image into your workspace type:
 
 ```
@@ -42,7 +42,7 @@ You can display the clown image using the built-in MATLAB function _imshow()_. T
 ### The Requirement
 
 You are required to write a function which rotates a grey scale image by _theta_ degrees radian, as shown below.
-<p align="center"> <img src="../images/rotated.jpg" /> </p>
+<p align="center"> <img src="Lab1assets/rotated.jpg" /> </p>
 
 The function should have the following format:
 
@@ -62,9 +62,9 @@ Note the following:
 >## Everything You Need To Know About Rotating Images
 
 Just in case your maths is a bit rusty, here’s the basics of image rotation:
-<p align="center"> <img src="../images/rotation_plot.jpg" /> </p>
+<p align="center"> <img src="Lab1assets/rotation_plot.jpg" /> </p>
 
-<p align="center"> <img src="../images/rotation_eq.jpg" /> </p>
+<p align="center"> <img src="Lab1assets/rotation_eq.jpg" /> </p>
 
 The way to perform the forward mapping would be as follows:
 
@@ -77,11 +77,11 @@ For each pixel in the source image
 ```
 
 >The problem with using the forward mapping directly is demonstrated in the figure below. Firstly there are pixels in the destination image with more than one source pixel. More of a problem is the fact that some pixels are never written to, leaving the destination image with holes!
-<p align="center"> <img src="../images/forward_mapping.jpg" /> </p>
+<p align="center"> <img src="Lab1assets/forward_mapping.jpg" /> </p>
 
 The way around this is to use the _**reverse mapping**_ equation in Equation 2. This works out where each destination pixel came from in the source image. This uses the **inverse** of the transformation matrix, which fortunately is easy to work out using the Matlab's **inv()** function.
 
-<p align="center"> <img src="../images/reverse_mapping.jpg" /> </p>
+<p align="center"> <img src="Lab1assets/reverse_mapping.jpg" /> </p>
 
 So the way to use the reverse mapping would be as follows:
 ```
@@ -191,7 +191,7 @@ end
 ### The Requirement
 
 You are required to write a function which shears the input image in both the x and y direction and centres the result, as shown in the figure below (using Xshear=0.1, Yshear=0.5).
-<p align="center"> <img src="../images/sheared.jpg" /> </p>
+<p align="center"> <img src="Lab1assets/sheared.jpg" /> </p>
 
 The function should have the following format:
 ```
@@ -213,7 +213,7 @@ Thus when Xshear=1, Yshear=0
 >## Everything You Need To Know About Shearing Images
 
 Here’s the basics of shearing transformations:
-<p align="center"> <img src="../images/shear_plot.jpg" /> </p>
+<p align="center"> <img src="Lab1assets/shear_plot.jpg" /> </p>
 
 As for the image rotation, you will want to use the reverse mapping of the transform to avoid problems with holes in the image.
 
