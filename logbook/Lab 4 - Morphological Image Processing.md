@@ -85,6 +85,14 @@ montage({A, E2, E10, E20}, "size", [2 2])
 ```
 Comment on the results.
 
+#### Answer
+
+<p align="center"> <img src="Lab4assets/1-5.png" /> </p>
+
+- Small SE (Radius 2): Removes very fine "hairs" or single-pixel noise from the edges without significantly altering the main shapes.
+- Medium SE (Radius 10): Thin connections or narrow parts of the mask will disappear completely.
+- Large SE (Radius 20): Only the very centers of the largest objects remain; most of the original structure is "eroded" away.
+
 ## Task 2 - Morphological Filtering with Open and Close
 
 ### Opening = Erosion + Dilation
