@@ -37,10 +37,13 @@ Bx = [1 0 1;
       1 0 1];
 ```
 
-> What happens if you dilate the original image with B1 twice (or more times)?
-
 #### Result
 <p align="center"> <img src="Lab4assets/1-3.png" /> </p>
+
+> What happens if you dilate the original image with B1 twice (or more times)?
+
+#### Answer
+Dilating multiple times is mathematically equivalent to dilating once with a larger structuring element. Each pass will further "fatten" the text and fill in more gaps, but eventually, the characters may merge and become unrecognizable.
 
 ### Generation of structuring element
 
