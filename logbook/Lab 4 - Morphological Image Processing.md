@@ -700,6 +700,46 @@ Sizes of fillings (in pixels):
 
 2. The file _'assets/palm.tif'_ is a palm print image in grayscale. Produce an output image that contains the main lines without all the underlining non-characteristic lines.
 
+#### Answers
+<p align="left"> <img src="Lab4assets/ch2-1.jpeg" /> </p>
+<p align="right"> <img src="Lab4assets/ch2-2.jpeg" /> </p>
+
+##### Code
+```
+%% Palm print main line extraction
+clear all; close all;
+
+% Read image
+f = imread('palm.tif');
+
+% Ensure grayscale
+if ndims(f) == 3
+    f = rgb2gray(f);
+end
+
+% Step 1: Enhance dark lines using bottom-hat filtering
+se = strel('disk', 15);   % size controls what counts as "main lines"
+f_bh = imbothat(f, se);
+
+% Step 2: Normalize contrast
+f_bh = mat2gray(f_bh);
+
+% Step 3: Threshold to get candidate lines
+BW = imbinarize(f_bh, graythresh(f_bh));
+
+% Step 4: Remove small non-characteristic lines
+BW_clean = bwareaopen(BW, 200);  % removes short/noisy lines
+
+% Step 5: Thicken main lines slightly for visibility
+BW_final = imdilate(BW_clean, strel('disk',1));
+
+% Display results
+figure;
+montage({f, f_bh, BW_clean, BW_final}, 'Size', [2 2]);
+title('Original | Bottom-hat | Cleaned Lines | Final Main Lines');
+```
+
+
 3. The file _'assets/normal-blood.png'_ is a microscope image of red blood cells. Using various techniques you have learned, write a Matlab .m script to count the number of red blood cells.
 
 ---
