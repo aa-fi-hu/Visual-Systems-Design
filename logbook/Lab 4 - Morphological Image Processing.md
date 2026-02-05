@@ -701,9 +701,9 @@ Sizes of fillings (in pixels):
 2. The file _'assets/palm.tif'_ is a palm print image in grayscale. Produce an output image that contains the main lines without all the underlining non-characteristic lines.
 
 #### Answers
-<p align="left"> <img src="Lab4assets/ch2-1.jpeg" /> </p>
-<p align="right"> <img src="Lab4assets/ch2-2.jpeg" /> </p>
-
+|  |  |
+| :---: | :---: |
+| <img src="Lab4assets/ch2-1.jpeg" width="400" /> | <img src="Lab4assets/ch2-2.jpeg" width="400" /> |
 ##### Code
 ```
 %% Palm print main line extraction
