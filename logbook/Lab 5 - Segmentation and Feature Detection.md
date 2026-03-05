@@ -1,9 +1,5 @@
 # Lab 5 - Segmentation and Feature Detection
-*_Peter Cheung, version 1.2, 19 Feb 2026_*
-
-
-In this laboratory session, you will explore techniques to identify features and regions in an image. As before, clone this repository to your laptop and keep your experimental logbook on your repo.  
-
+*19 Feb 2026*
 ## Task 1: Point Detection
 
 The file "crabpulsar.tif" contains an image of the neural star Crab Nebula, which was the remnant of the supernova SN 1054 seen on earth in the year 1054. 
@@ -26,7 +22,14 @@ threshold = 100;
 g3 = uint8((g2 >= threshold)*255); % thresholded
 montage({f, g1, g2, g3});
 ```
+##Answers
+Top Left (Original): Shows the Crab Nebula as a large, bright mass masking smaller background details.
 
+Top Right (g1): The Laplacian mask acts as a high-pass filter, sharpening edges and isolating small stars from the smooth nebula.
+
+Bottom Left (g2): Erosion removes low-intensity artifacts and noise, thinning the remaining detected points.
+
+Bottom Right (g3): Final thresholding creates a high-contrast binary image, successfully isolating the stars while completely removing the nebula.
 ## Task 2: Edge Detection 
 
 Matlab Image Processing Toolbox provides a special function *_edge( )_* which returns an output image containing edge points.  The general format of this function is:
