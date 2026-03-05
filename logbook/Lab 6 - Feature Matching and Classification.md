@@ -1,7 +1,6 @@
 # Lab 6 - Feature Matching and Classification
-*_Peter Cheung, version 1.2, 5 March 2026_*
 
-This laboratory session is designed to support the contents of Lectures 10 and 11 of the module.  
+**5 March 2026**
 
 ## Task 1: Image resizing
 
