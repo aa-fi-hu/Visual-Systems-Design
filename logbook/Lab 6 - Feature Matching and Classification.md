@@ -25,6 +25,87 @@ Matlab provides a proper image resizign function **_imresize(I, scale)_** where 
 
 Compare the results from the two approach to subsampling.
 
+
+#### Answers
+
+##### Our Solution
+```
+clear; close all; clc;
+
+I = imread('cafe_van_gogh.jpg');
+
+I1 = I;                           % original
+I2 = I1(1:2:end, 1:2:end, :);     % 1/2
+I3 = I1(1:4:end, 1:4:end, :);     % 1/4
+I4 = I1(1:8:end, 1:8:end, :);     % 1/8
+I5 = I1(1:16:end,1:16:end,:);     % 1/16
+I6 = I1(1:32:end,1:32:end,:);     % 1/32
+
+figure;
+montage({I1,I2,I3,I4,I5,I6},'Size',[2 3]);
+title('Poor subsampling by dropping rows/cols');
+
+clear; close all; clc;
+
+I = imread('cafe_van_gogh.jpg');
+
+I1 = I;
+I2 = imresize(I, 0.5);
+I3 = imresize(I, 0.25);
+I4 = imresize(I, 0.125);
+I5 = imresize(I, 0.0625);
+I6 = imresize(I, 0.03125);
+
+figure;
+montage({I1,I2,I3,I4,I5,I6},'Size',[2 3]);
+title('Proper resizing using imresize');
+```
+<p align="center"> <img src="Lab6assets/1a.png" /> </p>
+<p align="center"> <img src="Lab6assets/1b.png" /> </p>
+
+##### His Solution
+```
+clear all; close all;
+f0 = imread('assets/cafe_van_gogh.jpg');
+
+% Decimation by dropping samples & display
+f1 = f0(1:2:end,1:2:end,:);
+f2 = f1(1:2:end,1:2:end,:);
+f3 = f2(1:2:end,1:2:end,:);
+f4 = f3(1:2:end,1:2:end,:);
+f5 = f4(1:2:end,1:2:end,:);
+figure(1)
+montage({f0,f1,f2,f3,f4,f5},'Size',[2 3]);
+title('Wrong way of subsampling', 'FontSize', 14);
+
+% Use imresize which first filter the image before dropping samples
+f_1 = imresize(f0, 0.5);
+f_2 = imresize(f_1, 0.5);
+f_3 = imresize(f_2, 0.5);
+f_4 = imresize(f_3, 0.5);
+f_5 = imresize(f4, 0.5);
+figure(2)
+montage({f0,f_1,f_2,f_3,f_4,f_5},'Size',[2 3]);
+title('Correct way of subsampling', 'FontSize', 14);
+
+% Compare original with level 4 image
+figure(3)
+imshow(f0)
+title('Original Image', 'FontSize', 14);
+figure(4)
+imshow(f_3);
+title('1/8 image (filtered)', 'FontSize', 11);
+figure(5)
+imshow(f3);
+title('1/8 image (drop samples)', 'FontSize', 11);
+```
+<p align="center"> <img src="Lab6assets/1c.png" /> </p>
+<p align="center"> <img src="Lab6assets/1d.png" /> </p>
+<p align="center"> <img src="Lab6assets/1e.png" /> </p>
+<p align="center"> <img src="Lab6assets/1f.png" /> </p>
+<p align="center"> <img src="Lab6assets/1g.png" /> </p>
+
+
 ## Task 2: Pattern Matching with Normalized Cross Correlation
 
 In this task, we will examine how to use Matlab's normalized cross correlation (NCC) function **_normxcorr2( )_** to match a template in file **_'assets/template1.tif'_** to that of the image **_'salvador_grayscale.tif'_**.
