@@ -7,7 +7,7 @@ This laboratory session is designed to support the contents of Lectures 10 and 1
 
 The following image is the famous painting by van Gogh called 'Cafe Terrace at Night', which can be found in the file *_'cafe_van_gogh.jpg'_* in the _'assets'_ folder.  
 
-<p align="center"> <img src="assets/cafe_van_gogh.jpg" /> </p>
+<p align="center"> <img src="Lab6assets/cafe_van_gogh.jpg" /> </p>
 
 >Write a Matlab program to read this file and build the image pyramid by resize the image by a factor of 1/2, 1/4, 1/8, 1/16 and 1/32 by drop every other rows and columns.  Then display all six images as a montage of size [2 3]. 
 
