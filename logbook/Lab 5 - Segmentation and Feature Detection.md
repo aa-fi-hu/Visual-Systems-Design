@@ -261,7 +261,15 @@ where **_I_** is the input image, **_k_** is the number of clusters, **_L_** is 
 
 <p align="center"> <img src="Lab5assets/label_format.jpg" /> </p>
 
-Perform k-means clustering algorithm as shown below.
+### Answers
+<p align="center"> <img src="Lab5assets/task 5-1.png" /> </p>
+Color Space Grouping: The 3D scatter plot shows that the baboon image contains distinct clusters of colors (for example the blues of the face, the reds of the nose, and the browns of the fur).
+Cluster Meanings: When k = 3 is used, the algorithm merges similar shades into three dominant groups, simplifying the complex image into a high contrast map.
+Segmentation Logic: Pixels that are far apart in the image but similar in color (like two different patches of fur) are assigned the same label in matrix L.
+Visual Output: The label2rgb result shows solid blocks of color, demonstrating that K-means is an effective tool for separating an object from its background based solely on chromatic data.
+Efficiency: K-means is faster than manual thresholding for multi colored images.
+Limitation: It ignores the spatial location of pixels, meaning two identical colors in different parts of the image will always be placed in the same cluster.
+
 
 ```
 % perform k-means clustering
@@ -287,6 +295,16 @@ The Matlab function **_labe2rgb_** turns each element in **_L_** into the segmen
 
 > Explore different value of k and comment on the results.
 > Also, try segmenting the colourful image file 'assets/peppers.png'.
+> 
+### Answers
+<p align="center"> <img src="Lab5assets/task 5-2.png" /> </p>
+Scatter Plot Centers: The large black circles represent the centroids of each cluster. They mark the average RGB value that best represents all pixels within that specific group.
+Effect of k:
+Small k (e.g., 2–3): Produces a highly simplified image, useful for separating foreground (peppers) from background, but loses texture.
+Large k (e.g., 10–20): Preserves more detail and shading, but the segmentation becomes less distinct as color groups begin to overlap.
+Output L and centers: L acts as a spatial map of cluster assignments, while centers provides the actual RGB values used to recolor the image in the final montage.
+Peppers Analysis: Because the peppers have distinct, vibrant colors (red, green, yellow), K-means is highly effective at isolating each individual vegetable into its own segment.
+
 
 ## Task 6 - Watershed Segmentation with Distance Transform
 
