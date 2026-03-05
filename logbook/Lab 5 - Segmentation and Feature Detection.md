@@ -24,7 +24,7 @@ montage({f, g1, g2, g3});
 ```
 ### Answers
 
-<p align="center"> <img src="Lab5assets/edge_task 1.png" /> </p>
+<p align="center"> <img src="Lab5assets/task 1.png" /> </p>
 
 Top Left (Original): Shows the Crab Nebula as a large, bright mass masking smaller background details.
 
@@ -58,7 +58,7 @@ Repeat the edge detection exercise with different threshold to get the best resu
 
 ### Answers
 
-<p align="center"> <img src="Lab5assets/edge_task 2.png" /> </p>
+<p align="center"> <img src="Lab5assets/task 2.png" /> </p>
 
 Sobel: As expected, it captured the strongest gradients but appears slightly broken or "blocky" on the brain's subtle curves.
 
