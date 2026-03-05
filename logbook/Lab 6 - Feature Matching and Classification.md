@@ -182,6 +182,7 @@ title('Template match by NCC');
 ```
 <p align="center"> <img src="Lab6assets/2a.png" /> </p>
 <p align="center"> <img src="Lab6assets/2b.png" /> </p>
+
 ###### Explanation
 -> template position is the sharp peak (highest point)
 
@@ -220,6 +221,7 @@ title('Template match by NCC');
 ```
 <p align="center"> <img src="Lab6assets/2c.png" /> </p>
 <p align="center"> <img src="Lab6assets/2d.png" /> </p>
+
 ###### Explanation
 -> Comments:
 -> The rectangle tightly surrounds the true template location when the template exists with same scale and orientation.
