@@ -22,7 +22,10 @@ threshold = 100;
 g3 = uint8((g2 >= threshold)*255); % thresholded
 montage({f, g1, g2, g3});
 ```
-##Answers
+### Answers
+
+<p align="center"> <img src="Lab5assets/edge_task 1.png" /> </p>
+
 Top Left (Original): Shows the Crab Nebula as a large, bright mass masking smaller background details.
 
 Top Right (g1): The Laplacian mask acts as a high-pass filter, sharpening edges and isolating small stars from the smooth nebula.
@@ -52,6 +55,18 @@ The function *_edge_* allows the user to specify one or more threshold values wi
 <p align="center"> <img src="assets/edge_threshold.jpg" /> </p>
 
 Repeat the edge detection exercise with different threshold to get the best results you can for these two images.
+
+### Answers
+
+<p align="center"> <img src="Lab5assets/edge_task 2.png" /> </p>
+
+Sobel: As expected, it captured the strongest gradients but appears slightly broken or "blocky" on the brain's subtle curves.
+
+LoG: This method produced more complete, continuous contours than Sobel, especially in the circuit tracks.
+
+Canny: This provided the best result, yielding thin, well-defined, and continuous edges for both the circuit and the tumor boundary.
+
+Comparison: The Canny operator is clearly superior here as it manages to ignore noise while connecting edge segments that the other two methods missed.
 
 
 ## Task 3 - Hough Transform for Line Detection
