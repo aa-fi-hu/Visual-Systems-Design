@@ -63,6 +63,13 @@ title('Proper resizing using imresize');
 <p align="center"> <img src="Lab6assets/1a.png" /> </p>
 <p align="center"> <img src="Lab6assets/1b.png" /> </p>
 
+###### Explanation
+Poor method: directly subsampling the image.
+​-> As scale decreases, aliasing and jagged/moire patterns will appear, especially around high‑frequency details.
+
+Good method: applies a low‑pass (Gaussian) filter before subsampling, so edges look smoother and aliasing artifacts are reduced
+-> ​At very small scales both methods lose detail, but the imresize versions look more visually consistent and less noisy.
+
 ##### His Solution
 ```
 clear all; close all;
