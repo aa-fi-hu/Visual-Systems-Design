@@ -149,6 +149,83 @@ drawrectangle(gca,'Position', ...
 
 It is clear that NCC can only match a template to an image if the match is exact or nearly exact.
 
+#### Answers
+
+```
+clear; close all; clc;
+
+f = imread('salvador_grayscale.tif');
+w = imread('template1.tif');   % using template1
+c = normxcorr2(w, f);
+
+figure(1);
+surf(c);
+shading interp;
+title('NCC between template1 and image');
+
+figure(1);
+surf(c);
+shading interp;
+title('NCC between template1 and image');
+
+[ypeak, xpeak] = find(c == max(c(:)));
+yoffSet = ypeak - size(w,1);
+xoffSet = xpeak - size(w,2);
+
+figure(2);
+imshow(f);
+hold on;
+drawrectangle(gca, 'Position', ...
+    [xoffSet, yoffSet, size(w,2), size(w,1)], ...
+    'FaceAlpha', 0);
+title('Template match by NCC');
+```
+<p align="center"> <img src="Lab6assets/2a.png" /> </p>
+<p align="center"> <img src="Lab6assets/2b.png" /> </p>
+###### Explanation
+-> template position is the sharp peak (highest point)
+
+ Find function:
+-> returns indices of all elements where the condition is true; here it returns row and column of the maximum value in c.
+​-> Using c == max(c(:)), gives the coordinates of the global maximum NCC value (best match) from which offsets are computed
+
+```
+clear; close all; clc;
+
+f = imread('salvador_grayscale.tif');
+w = imread('template2.tif');   % using template2
+c = normxcorr2(w, f);
+
+figure(1);
+surf(c);
+shading interp;
+title('NCC between template1 and image');
+
+figure(1);
+surf(c);
+shading interp;
+title('NCC between template1 and image');
+
+[ypeak, xpeak] = find(c == max(c(:)));
+yoffSet = ypeak - size(w,1);
+xoffSet = xpeak - size(w,2);
+
+figure(2);
+imshow(f);
+hold on;
+drawrectangle(gca, 'Position', ...
+    [xoffSet, yoffSet, size(w,2), size(w,1)], ...
+    'FaceAlpha', 0);
+title('Template match by NCC');
+```
+<p align="center"> <img src="Lab6assets/2c.png" /> </p>
+<p align="center"> <img src="Lab6assets/2d.png" /> </p>
+###### Explanation
+-> Comments:
+-> The rectangle tightly surrounds the true template location when the template exists with same scale and orientation.
+​-> Repeating will show good localization only when the template is very similar; if appearance differs, peak correlation is lower and localization worsens, illustrating NCC’s sensitivity to exact appearance.
+
+
 ## Task 3: SIFT Feature Detection
 
 Let us now try to apply the SIFT detector provided by Matlab through the function **_detectSIFTFeastures( )_** on the Dali painting that we used in task 1.
