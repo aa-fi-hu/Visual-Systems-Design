@@ -324,6 +324,14 @@ g = bwmorph(g, "open", 1);
 montage({I,g});
 title('Original & binarized cleaned image')
 ```
+### Answers
+<p align="center"> <img src="Lab5assets/task 6-1.png" /> </p>
+Binarization: Using graythresh and im2bw isolates the light wooden dowels from the dark background, though the wood grain creates holes (noise) inside the shapes.
+Morphological Closing (g): The bwmorph close operation fills the internal gaps and wood grain noise, creating solid masks for the dowels.
+Morphological Opening (g): This operation smooths the exterior boundaries and removes small unwanted background artifacts.
+Limitation: While the shapes are cleaned, the touching dowels remain connected as single merged components in this binary mask.
+
+
 Instead of applying watershed transform on this binary image directly, a technique often used with watershed is to first calculate the distance transform of this binary image. The distance transform is simply the distance from every pixel to the nearest nonzero-valued (foreground) pixel.  Matlab provides the function **_bwdist( )_** to return an image where the intensity is the distance of each pixel to the nearest foreground (white) pixel.  
 
 ```
@@ -334,7 +342,16 @@ figure(2)
 imshow(D,[min(D(:)) max(D(:))])
 title('Distance Transform')
 ```
-> Why do we perform the distance transform on gc and not on g?   
+> Why do we perform the distance transform on gc and not on g?
+
+### Answers
+<p align="center"> <img src="Lab5assets/task 6-2.png" /> </p>
+Purpose: The distance transform converts the binary shapes into a topographic map where intensity represents depth.
+Complementing (gc): We complement the image so that the dowels become background (zeros), allowing bwdist to calculate how far each pixel inside the dowel is from the edge.
+Resulting Peaks: The centers of the dowels appear as the brightest points because they are the furthest from the cloth.
+Functionality: These peaks serve as the catchment basins that guide the Watershed algorithm to find the exact center of each object for separation.
+Why do we perform the distance transform on gc and not on g?: The bwdist function computes the distance from each pixel to the nearest non-zero pixel, and by using gc (where the background is white and the dowels are black), the distance increases toward the dowel centers, creating bright peaks that help the watershed algorithm separate individual objects.
+
 
 Note that the **_imshow_** function has a second parameter which stretches the distance transform image over the full range of the grayscale.
 
@@ -349,6 +366,15 @@ title('Watershed Segemented Label')
 ```
 > Make sure you understand the image presented. Why is this appears as a grayscale going from dark to light from left the right? 
 
+### Answers
+<p align="center"> <img src="Lab5assets/task 6-3.png" /> </p>
+Label Matrix: The watershed function assigns a unique integer ID to every isolated region it discovers.
+Intensity Gradient: The image looks darker on the left and brighter on the right because the regions are numbered sequentially (1, 2, 3...).
+Boundary Detection: It identifies the exact ridge lines where two expanding regions meet, assigning them a value of 0.
+Object Separation: This step successfully treats the merged blobs as separate entities, which is the core goal of the task.
+Why is this appears as a grayscale going from dark to light from left the right? : The grayscale gradient appears because the watershed function assigns sequential numeric labels to regions, and imshow displays these label values as different brightness levels.
+
+
 ```
 % Merge everything to show segmentation
 W = (L==0);
@@ -358,6 +384,16 @@ montage({I, g, W, g2}, 'size', [2 2]);
 title('Original Image - Binarized Image - Watershed regions - Merged dowels and segmented boundaries')
 ```
 > Explain the montage in this last step.
+
+### Answers
+<p align="center"> <img src="Lab5assets/task 6-4.png" /> </p>
+Process Verification: The montage displays the progression from the raw image to the successfully segmented result.
+Original vs. Binary: It highlights how standard thresholding (g) fails to separate touching dowels, treating them as a single mass.
+Watershed Lines (W): These represent the mathematical cuts made at the narrowest points between objects, effectively separating the merged blobs.
+Integrated Result (g2): By merging the binary mask with the ridge lines, the final image shows each dowel as an isolated region, ready for counting or analysis.
+Final Conclusion for Task 6: The combination of morphological operations to clean noise, distance transform to find object centers, and watershed segmentation to find boundaries is a robust method for separating touching objects that simple thresholding cannot handle.
+
+
 
 ## Challenges
 
