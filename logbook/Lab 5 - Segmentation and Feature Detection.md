@@ -44,7 +44,7 @@ Matlab Image Processing Toolbox provides a special function *_edge( )_* which re
 *_g_* is the output image.  *_t_* is an optional return value giving the threshold being used in the algorithm to produce the output.  
 *_'method'_* is one of several algorithm to be used for edge detection.  The table below describes three algorithms we have covered in Lecture 8.
 
-<p align="center"> <img src="assets/edge_methods.jpg" /> </p>
+<p align="center"> <img src="Lab5assets/edge_methods.jpg" /> </p>
 
 The image file *_'circuits.tif'_* is part of a chip micrograph for an intergrated circuit.  The image file *_'brain_tumor.jpg'_* shows a MRI scan of a patient's brain with a tumor.
 
@@ -52,7 +52,7 @@ Use *_function edge( )_* and the three methods: Sobel, LoG and Canny, to extract
 
 The function *_edge_* allows the user to specify one or more threshold values with the optional input *_parameter_* to control the sensitivity to edges being detected.  The table below explains the meaning of the threshold parameters that one may use.
 
-<p align="center"> <img src="assets/edge_threshold.jpg" /> </p>
+<p align="center"> <img src="Lab5assets/edge_threshold.jpg" /> </p>
 
 Repeat the edge detection exercise with different threshold to get the best results you can for these two images.
 
@@ -94,7 +94,7 @@ Now perform the Hough Transform with the function *_hough( )_* which has the for
 ```
 where *_image_* is the input grayscale image, *_theta_* and *_rho_* are the angle and distance in the transformed parameter space, and *_H_* is the number of times that a pixel from the image falls on this parameter "bin".  Therefore, the bins at (theta,rho) coordinate with high count values belong to a line.  (See Lecture 8, slides 19-25.)  The diagram below shows the geometric relation of *_theta_* and *_rho_* to a straight line.
 
-<p align="center"> <img src="assets/hough.jpg" /> </p>
+<p align="center"> <img src="Lab5assets/hough.jpg" /> </p>
 
 Now perform Hough Transform in Matlab:
 ```
@@ -161,7 +161,7 @@ for k = 1:length(lines)
 
 The function **_houghlines( )_** returns arrays of lines, which is a structure including details of line segments derived from the results from both **_hough_** and **_houghpeaks_**.  Details are given in the table below.
 
-<p align="center"> <img src="assets/lines_struct.jpg" /> </p>
+<p align="center"> <img src="Lab5assets/lines_struct.jpg" /> </p>
 
 The start and end coordinates of each line segment is used to define the starting and ending point of the line which is plotted as overlay on the image.
 
@@ -209,7 +209,7 @@ Matlab provides a built-in function **_imsegkmeans_** that perform k-means segme
 ```
 where **_I_** is the input image, **_k_** is the number of clusters, **_L_** is the label matrix as described in the table below.  Each element of **_L_** contains the label for the pixel in **_I_**, which is the cluster index that pixel belongs.  **_centers_** contains the mean values for the k clusters.
 
-<p align="center"> <img src="assets/label_format.jpg" /> </p>
+<p align="center"> <img src="Lab5assets/label_format.jpg" /> </p>
 
 Perform k-means clustering algorithm as shown below.
 
@@ -241,7 +241,7 @@ The Matlab function **_labe2rgb_** turns each element in **_L_** into the segmen
 ## Task 6 - Watershed Segmentation with Distance Transform
 
 Below is an image of a collections of dowels viewed ends-on. The objective is to segment this into regions, with each region containing only one dowel.  Touch dowels should also be separated.
-<p align="center"> <img src="assets/dowels.jpg" /> </p>
+<p align="center"> <img src="Lab5assets/dowels.jpg" /> </p>
 This image is  suitable for watershed algorithm because touch dowels will often be merged into one object. This is not the case with watershed segmentation.
 
 Read the image and produce a cleaned version of binary image having the dowels as foreground and cloth underneath as background.  Note how morophological operations are used to reduce the "noise" in grayscale image.  The "noise" is the result of thresholding on the pattern of the wood.
