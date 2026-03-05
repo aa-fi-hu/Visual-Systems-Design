@@ -86,6 +86,9 @@ figure(1)
 montage({f,fEdge})
 ```
 This is the same image as that used in Task 2, but rotated by 33 degrees.
+### Answers
+<p align="center"> <img src="Lab5assets/task 3_1.png" /> </p>
+Rotation: The input image is the same integrated circuit from Task 2 but oriented at a $33^\circ$ angle.Edge Quality: The Canny operator is used because the Hough Transform requires thin, single-pixel edge points to accurately populate the parameter space ($\rho, \theta$).Preparation: By isolating only the structural boundaries, we remove unnecessary surface texture that could create "false" lines during the transform.
 
 #### Step 2: Do the Hough Transform
 Now perform the Hough Transform with the function *_hough( )_* which has the format:
@@ -109,6 +112,11 @@ axis on, axis normal, hold on;
 
 The image, which I shall called the **_Hough Image_**, correspond to the counts in the Hough transform parameter domain with the intensity representing the count value at each bin.  The brighter the point, the more edge points maps to this parameter.  Therefore all edge points on a straight line will map to this parameter bin and increase its brightness.
 
+### Answers
+<p align="center"> <img src="Lab5assets/task 3_2.png" /> </p>
+Hough Space Representation: The resulting image is the accumulator matrix where the x-axis represents the angle ($\theta$) and the y-axis represents the distance from the origin ($\rho$).Peak Identification: Bright spots in this "Hough Image" indicate parameters where many edge points intersect, signifying the presence of a straight line in the original image.Symmetry and Shape: Since the circuit has many parallel and perpendicular lines, you will notice distinct clusters of bright peaks spaced approximately $90^\circ$ apart.Rotation Impact: Because the image is rotated by $33^\circ$, the primary peaks will be shifted along the $\theta$ axis compared to a standard non-rotated circuit image.
+
+
 #### Step 3: Find peaks in Hough Image
 Matlab  provides a special function **_houghpeaks_** which has the format:
 ```
@@ -131,6 +139,12 @@ plot(x,y,'o','color','red', 'MarkerSize',10, 'LineWidth',1);
 
 > Explore the contents of array *_peaks_* and relate this to the Hough image with the overlay red circles.
 
+
+### Answers
+<p align="center"> <img src="Lab5assets/task 3_3.png" /> </p>
+Content of peaks: This is a $5 \times 2$ matrix where each row contains the row and column indices $(r, c)$ of the accumulator matrix $H$ corresponding to the highest vote counts.Coordinate Mapping: The indices in peaks are mapped back to physical values using the theta and rho arrays to determine the exact angle and distance of the detected lines.Significance of the 5 Peaks: These represent the five longest or most prominent straight-line segments in the rotated circuit image.Visual Correlation: The red circles align precisely with the brightest "intensity" spots in the Hough Image, confirming that the algorithm successfully located the strongest linear features.
+
+
 #### Step 4: Explore the peaks in the Hough Image
 It can be insightful to take a look at the Hough Image in a different way.  Try this:
 
@@ -143,6 +157,10 @@ ylabel('rho','FontSize',16)
 zlabel('Hough Transform counts','FontSize',16)
 ```
 You will see a plot of the Hough counts in the parameter space as a 3D plot instead of an image.  You can use the mouse (or track pad) to rotate the plot in any directions and have a sense of where the peaks occurs.  The **_houghpeak_** function simply search this profile and fine the highest specified number of peaks.  
+
+### Answers
+<p align="center"> <img src="Lab5assets/task 3_4.png" /> </p>
+Surface Plot (surf): Unlike the 2D intensity image, the 3D plot represents "votes" as vertical height ($z$-axis).Peak Identification: The five peaks identified in Step 3 correspond to the highest "mountains" in this 3D topography.Noise vs. Signal: The "valleys" represent random edge points or noise, while the sharp spikes represent significant linear alignment in the circuit image.Rotation Insights: By rotating the plot, you can clearly see how the clusters of peaks are separated by approximately $90^\circ$, confirming the rectangular geometry of the circuit traces.
 
 ### Step 5: Fit lines into the image
 
@@ -169,6 +187,10 @@ The start and end coordinates of each line segment is used to define the startin
 > Explore how you may detect more lines and different lines (e.g. those orthogonal to the ones detected).
 
 > Optional: Matlab also provides the function **_imfindcircles( )_**, which uses Hough Transform to detect circles instead of lines.  You are left to explore this yourself.  You will find two relevant image files for cicle detection: *_'circles.tif'_* and *_eight.png_* in the *_assets_* folder.
+
+### Answers
+<p align="center"> <img src="Lab5assets/task 3_5.png" /> </p>
+Line Segment Count: More than 5 segments are detected because houghlines finds multiple collinear segments (broken lines) that all fall along the same $(\theta, \rho)$ peak.Detecting More Lines: Increase the numpeaks in houghpeaks or lower the 'threshold' parameter to capture fainter or shorter line segments.Detecting Orthogonal Lines: Since the circuit is rectangular, orthogonal lines exist at $\theta \pm 90^\circ$; ensuring the peak search covers the full $-90^\circ$ to $89^\circ$ range will capture them.Circle Detection: The imfindcircles function works similarly but uses a 3D accumulator $(\text{center } x, \text{center } y, \text{radius})$ to identify circular features like coins or drill holes.
 
 ## Task 4 - Segmentation by Thresholding
 
