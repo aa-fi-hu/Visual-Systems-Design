@@ -391,7 +391,7 @@ Process Verification: The montage displays the progression from the raw image to
 Original vs. Binary: It highlights how standard thresholding (g) fails to separate touching dowels, treating them as a single mass.
 Watershed Lines (W): These represent the mathematical cuts made at the narrowest points between objects, effectively separating the merged blobs.
 Integrated Result (g2): By merging the binary mask with the ridge lines, the final image shows each dowel as an isolated region, ready for counting or analysis.
-Final Conclusion for Task 6: The combination of morphological operations to clean noise, distance transform to find object centers, and watershed segmentation to find boundaries is a robust method for separating touching objects that simple thresholding cannot handle.
+Final Conclusion: The combination of morphological operations to clean noise, distance transform to find object centers, and watershed segmentation to find boundaries is a robust method for separating touching objects that simple thresholding cannot handle.
 
 
 
