@@ -632,9 +632,118 @@ toc                                         % report elapsed time
 title({char(label), num2str(max(score),2)}); % label object
 ```
 
+>#### Answers
+
+<p align="center"> <img src="Lab6assets/task6.png" /> </p>
+
+
 > Use the webcam to try to recognize different objects.  Also try to find the accuracy and speed of recogniture for different networks.
->
+
+```
+clear; close all; clc;
+
+camera = webcam;  % default camera
+networks = {'googlenet', 'alexnet'};
+Ntest = 10;
+times = zeros(length(networks), Ntest);
+labels_cell = cell(length(networks), 1);
+scores = zeros(length(networks), Ntest);
+
+for n = 1:length(networks)
+    netName = networks{n};
+    net = feval(netName);
+    inputSize = net.Layers(1).InputSize(1:2);
+    
+    fprintf('\n--- Testing %s (%dx%d) ---\n', netName, inputSize(1), inputSize(2));
+    
+    for i = 1:Ntest
+        I = snapshot(camera);
+        f = imresize(I, inputSize);
+        
+        tic;
+        [label, score] = classify(net, f);
+        times(n,i) = toc;
+        
+        labels_cell{n} = [labels_cell{n} char(label) ', '];
+        scores(n,i) = max(score);
+        
+        fprintf('Frame %d: %s (conf %.2f, %.3f s)\n', i, label, scores(n,i), times(n,i));
+    end
+end
+
+clear camera;
+
+% Print simple summary (no table)
+fprintf('\n=== SUMMARY ===\n');
+for n = 1:length(networks)
+    avgTime = mean(times(n,:));
+    avgConf = mean(scores(n,:));
+    fprintf('%s: avg time = %.3f s, avg conf = %.3f\n', ...
+            networks{n}, avgTime, avgConf);
+end
+
+```
+
+--- Testing googlenet (224x224) ---
+Frame 1: syringe (conf 0.08, 0.196 s)
+Frame 2: syringe (conf 0.08, 0.018 s)
+Frame 3: plunger (conf 0.10, 0.017 s)
+Frame 4: plunger (conf 0.12, 0.019 s)
+Frame 5: plunger (conf 0.14, 0.020 s)
+Frame 6: plunger (conf 0.16, 0.019 s)
+Frame 7: plunger (conf 0.12, 0.020 s)
+Frame 8: plunger (conf 0.13, 0.019 s)
+Frame 9: plunger (conf 0.11, 0.018 s)
+Frame 10: plunger (conf 0.13, 0.018 s)
+
+--- Testing alexnet (227x227) ---
+Frame 1: shower cap (conf 0.10, 0.285 s)
+Frame 2: bathing cap (conf 0.09, 0.021 s)
+Frame 3: shower cap (conf 0.10, 0.021 s)
+Frame 4: shower cap (conf 0.09, 0.022 s)
+Frame 5: shower cap (conf 0.10, 0.023 s)
+Frame 6: shower cap (conf 0.10, 0.021 s)
+Frame 7: shower cap (conf 0.10, 0.021 s)
+Frame 8: shower cap (conf 0.10, 0.021 s)
+Frame 9: shower cap (conf 0.10, 0.021 s)
+Frame 10: shower cap (conf 0.10, 0.021 s)
+
+=== SUMMARY ===
+googlenet: avg time = 0.036 s, avg conf = 0.115
+alexnet: avg time = 0.048 s, avg conf = 0.097
+
+
+
 > Modify this code so that you capture and recognize object in a continous loop.
+>
+
+```
+clear; close all; clc;
+
+camera = webcam;
+net = googlenet;                    % GoogLeNet
+inputSize = net.Layers(1).InputSize(1:2);  % 224x224
+
+figure;
+
+for i = 1:300  % ~300 frames, Ctrl+C to stop
+    I = snapshot(camera);
+    f = imresize(I, inputSize);
+
+    tic;
+    [label, score] = classify(net, f);
+    elapsedTime = toc;
+
+    imshow(I); axis image off;
+    title({char(label), ...
+           ['Conf: ' num2str(max(score), 2) ...
+            '  Time: ' num2str(elapsedTime, '%.3f') ' s']});
+    
+    drawnow;
+end
+
+clear camera;  % release webcam
+```
 
 You may also want to read and explore these online documents that accompany Matlab:
 
