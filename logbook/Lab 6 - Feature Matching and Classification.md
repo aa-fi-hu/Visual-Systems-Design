@@ -246,7 +246,7 @@ plot(points.selectStrongest(100));
 
 >#### Answers
 
-<p align="center"> <img src="Lab6assets/2a.png" /> </p>
+<p align="center"> <img src="Lab6assets/3a.png" /> </p>
 
 -> Comments:
 -> The detected SIFT keypoints (green circles and crosses) concentrate on high‑contrast and textured regions such as the melting clocks, the tree trunk and the rocky structure on the right, while the smooth sky and flat ground have few or no points.
@@ -343,7 +343,14 @@ hold off;
 The code above finds the _Nbest_ features using SIFT in each iage and overlay the features as cicles onto the image.
 
 >How successful do you think SIFT has managed to detect features for these two images (one is a quarter of the size of the other)?  What conclusions can you make?
+>
+>#### Answers
 
+<p align="center"> <img src="Lab6assets/4a.png" /> </p>
+<p align="center"> <img src="Lab6assets/4b.png" /> </p>
+
+-> Comments:
+-> SIFT has detected a very similar pattern of keypoints in both the original and the down‑scaled versions of the van Gogh painting: the strongest features cluster around the cafe facade table edges, window frames, cobblestones and bright stars in the sky. Although the second image is smaller, SIFT still finds points at corresponding visual structures, just with different circle radii, which reflects its built‑in scale invariance. This shows that SIFT can reliably locate stable, repeatable features across significant changes in image size, making these keypoints good candidates for later matching between different resolutions of the same scene.
 
 ## Task 4: SIFT matching - scale and rotation invariance
 
@@ -363,6 +370,13 @@ The arrays *_points1_* and *_points2_* contains the interest points in the two i
 
 Comment on the results.
 
+>#### Answers
+
+<p align="center"> <img src="Lab6assets/4c.png" /> </p>
+
+-> Comments:
+-> The code matches a very large number of SIFT features between the two scales, showing strong scale invariance, but the visualisation is cluttered because every match is drawn, making it hard to visually inspect individual correspondences.
+
 Now replace:
 ```
 [features1, valid_points1] = extractFeatures(f1, points1);
@@ -373,7 +387,125 @@ with:
 ```
 Comment on the results.
 
+
+>#### Answers
+
+<p align="center"> <img src="Lab6assets/4d.png" /> </p>
+
+-> Comments:
+-> Using SIFT on the original and scaled images, the matcher finds a set of clear correspondences that mostly lie on meaningful structures such as the cafe facade, windows, tables, and the cobblestone street. The yellow lines radiating from the smaller, central image to the larger background image show that many features are consistently detected at both scales and correctly linked, confirming SIFT’s ability to provide strong scale‑invariant matches across the scene.
+
+
 >Next, rotate the smaller image by 20 degrees using the Matlab function **_imrotate( )_** and show that indeed SIFT is rotation invariant.
+>
+>#### Answers
+<p align="center"> <img src="Lab6assets/4e.png" /> </p>
+<p align="center"> <img src="Lab6assets/4f.png" /> </p>
+
+```
+ clear; close all; clc;
+
+% Original and scaled images
+I1 = imread('cafe_van_gogh.jpg');
+I2 = imresize(I1, 0.5);
+
+f1 = im2gray(I1);
+f2 = im2gray(I2);
+
+points1 = detectSIFTFeatures(f1);
+points2 = detectSIFTFeatures(f2);
+
+Nbest = 100;
+bestFeatures1 = points1.selectStrongest(Nbest);
+bestFeatures2 = points2.selectStrongest(Nbest);
+
+% --- show SIFT points on both images (as in handout) ---
+figure(1); imshow(I1);
+hold on; plot(bestFeatures1); hold off;
+title('Top 100 SIFT points - original');
+
+figure(2); imshow(I2);
+hold on; plot(bestFeatures2); hold off;
+title('Top 100 SIFT points - scaled');
+
+% --- SIFT matching with rotation invariance test ---
+
+% Rotate the smaller image by 20 degrees
+I2_rot = imrotate(I2, 20);          % rotate scaled image
+f2_rot = im2gray(I2_rot);
+
+% Detect SIFT points in rotated image
+points2_rot = detectSIFTFeatures(f2_rot);
+
+% Extract features from original and rotated images
+[features1,  valid_points1]  = extractFeatures(f1, points1);
+[features2r, valid_points2r] = extractFeatures(f2_rot, points2_rot);
+
+% Match features (unique matches)
+indexPairs_rot = matchFeatures(features1, features2r, 'Unique', true);
+
+matchedPoints1r = valid_points1(indexPairs_rot(:,1), :);
+matchedPoints2r = valid_points2r(indexPairs_rot(:,2), :);
+
+% Show matched features between original and rotated images
+figure(3);
+showMatchedFeatures(f1, f2_rot, matchedPoints1r, matchedPoints2r);
+title(sprintf('SIFT matches with 20^\\circ rotation (N = %d)', ...
+    size(indexPairs_rot,1)));
+
+clear; close all; clc;
+
+% Original and scaled images
+I1 = imread('cafe_van_gogh.jpg');
+I2 = imresize(I1, 0.5);
+
+f1 = im2gray(I1);
+f2 = im2gray(I2);
+
+points1 = detectSIFTFeatures(f1);
+points2 = detectSIFTFeatures(f2);
+
+Nbest = 100;
+bestFeatures1 = points1.selectStrongest(Nbest);
+bestFeatures2 = points2.selectStrongest(Nbest);
+
+% --- show SIFT points on both images (as in handout) ---
+figure(1); imshow(I1);
+hold on; plot(bestFeatures1); hold off;
+title('Top 100 SIFT points - original');
+
+figure(2); imshow(I2);
+hold on; plot(bestFeatures2); hold off;
+title('Top 100 SIFT points - scaled');
+
+% --- Rotation invariance using BEST features only ---
+
+% Rotate the smaller image by 20 degrees
+I2_rot = imrotate(I2, 20);        % rotate scaled image
+f2_rot = im2gray(I2_rot);
+
+% Detect SIFT points in rotated image
+points2_rot = detectSIFTFeatures(f2_rot);
+
+% Select strongest N points in rotated image
+bestFeatures2_rot = points2_rot.selectStrongest(Nbest);
+
+% Extract features ONLY from strongest points
+[features1,      valid_points1]      = extractFeatures(f1, bestFeatures1);
+[features2_rot,  valid_points2_rot]  = extractFeatures(f2_rot, bestFeatures2_rot);
+
+% Match features (unique matches)
+indexPairs_rot = matchFeatures(features1, features2_rot, 'Unique', true);
+
+matchedPoints1r = valid_points1(indexPairs_rot(:,1), :);
+matchedPoints2r = valid_points2_rot(indexPairs_rot(:,2), :);
+
+% Show matched features between original and rotated images
+figure(3);
+showMatchedFeatures(f1, f2_rot, matchedPoints1r, matchedPoints2r);
+title(sprintf('SIFT matches (best %d points, 20^\\circ rotation)', ...
+    size(indexPairs_rot,1)));
+```
 
 ## Task 5: SIFT vs SURF
 
