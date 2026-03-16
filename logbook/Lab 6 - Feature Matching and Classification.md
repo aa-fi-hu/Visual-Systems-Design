@@ -242,13 +242,76 @@ hold on;
 plot(points.selectStrongest(100));
 ```
 >Comment on the results.
->Explore and explain the contents of the data structure *_points_*. 
+>Explore and explain the contents of the data structure *_points_*.
+
+>#### Answers
+
+<p align="center"> <img src="Lab6assets/2a.png" /> </p>
+
+-> Comments:
+-> The detected SIFT keypoints (green circles and crosses) concentrate on high‑contrast and textured regions such as the melting clocks, the tree trunk and the rocky structure on the right, while the smooth sky and flat ground have few or no points.
+-> Many keypoints have different circle sizes, showing that SIFT is capturing features over multiple scales: small circles on fine details (clock markings, edges) and larger circles on bigger structures (the white cloth, large clock outlines) - scale invariance.
+-> The distribution of points covers all main objects of interest in the painting, which means they are stable and repeatable across transformations.
+
+Contents of the points data structure
+In MATLAB, points is a SIFTPoints object array returned by detectSIFTFeatures. Each element (each keypoint) stores:
+​-> Location – the (x,y) image coordinates of the keypoint, accessed with points(i).Location or points.Location for all of them.
+-> Scale – the detected characteristic scale (rough “size” of the feature), accessed with points(i).Scale; this corresponds to the radius of the circles drawn in your plot.
+-> Orientation – the dominant gradient direction at that point, accessed with points(i).Orientation; SIFT uses this to achieve rotation invariance.
+-> Metric – a strength/contrast score indicating how “good” or distinctive that feature is; selectStrongest(N) uses this metric to keep the N most reliable keypoints.
 
 You may want to consult this [Matlab page](https://uk.mathworks.com/help/vision/ref/siftpoints.html) about SIFT Interesting Points.
 
 >Find the SIFT points for the image **_'cafe_van_gogh.jpg'_**.
 >
 > Explore  other methods of feature detection provided by Matlab provided in their toolboxes.
+
+>#### Answers
+
+```
+clear; close all; clc;
+
+I = imread('cafe_van_gogh.jpg');  % Van Gogh painting
+f = im2gray(I);
+
+pointsSIFT = detectSIFTFeatures(f);      % SIFT detector
+
+figure;
+imshow(I); hold on;
+plot(pointsSIFT.selectStrongest(100));
+title('Top 100 SIFT keypoints on cafe\_van\_gogh');
+
+% SURF features
+pointsSURF = detectSURFFeatures(f);
+
+figure;
+imshow(I); hold on;
+plot(pointsSURF.selectStrongest(100));
+title('Top 100 SURF keypoints on cafe\_van\_gogh');
+
+% KAZE features
+pointsKAZE = detectKAZEFeatures(f);
+
+figure;
+imshow(I); hold on;
+plot(pointsKAZE.selectStrongest(100));
+title('Top 100 KAZE keypoints on cafe\_van\_gogh');
+
+% BRISK features
+pointsBRISK = detectBRISKFeatures(f);
+
+figure;
+imshow(I); hold on;
+plot(pointsBRISK.selectStrongest(100));
+title('Top 100 BRISK keypoints on cafe\_van\_gogh');
+```
+
+
+<p align="center"> <img src="Lab6assets/3b.png" /> </p>
+<p align="center"> <img src="Lab6assets/3c.png" /> </p>
+<p align="center"> <img src="Lab6assets/3d.png" /> </p>
+<p align="center"> <img src="Lab6assets/3e.png" /> </p>
+
 
 ## Task 4: SIFT matching
 
