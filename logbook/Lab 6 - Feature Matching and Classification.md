@@ -685,31 +685,53 @@ end
 ```
 
 --- Testing googlenet (224x224) ---
-Frame 1: syringe (conf 0.08, 0.196 s)
-Frame 2: syringe (conf 0.08, 0.018 s)
-Frame 3: plunger (conf 0.10, 0.017 s)
-Frame 4: plunger (conf 0.12, 0.019 s)
-Frame 5: plunger (conf 0.14, 0.020 s)
-Frame 6: plunger (conf 0.16, 0.019 s)
-Frame 7: plunger (conf 0.12, 0.020 s)
-Frame 8: plunger (conf 0.13, 0.019 s)
-Frame 9: plunger (conf 0.11, 0.018 s)
-Frame 10: plunger (conf 0.13, 0.018 s)
+
+> Frame 1: syringe (conf 0.08, 0.196 s)
+>
+> Frame 2: syringe (conf 0.08, 0.018 s)
+>
+> Frame 3: plunger (conf 0.10, 0.017 s)
+>
+> Frame 4: plunger (conf 0.12, 0.019 s)
+> 
+> Frame 5: plunger (conf 0.14, 0.020 s)
+>
+> Frame 6: plunger (conf 0.16, 0.019 s)
+>
+> Frame 7: plunger (conf 0.12, 0.020 s)
+>
+> Frame 8: plunger (conf 0.13, 0.019 s)
+>
+> Frame 9: plunger (conf 0.11, 0.018 s)
+>
+> Frame 10: plunger (conf 0.13, 0.018 s)
 
 --- Testing alexnet (227x227) ---
-Frame 1: shower cap (conf 0.10, 0.285 s)
-Frame 2: bathing cap (conf 0.09, 0.021 s)
-Frame 3: shower cap (conf 0.10, 0.021 s)
-Frame 4: shower cap (conf 0.09, 0.022 s)
-Frame 5: shower cap (conf 0.10, 0.023 s)
-Frame 6: shower cap (conf 0.10, 0.021 s)
-Frame 7: shower cap (conf 0.10, 0.021 s)
-Frame 8: shower cap (conf 0.10, 0.021 s)
-Frame 9: shower cap (conf 0.10, 0.021 s)
-Frame 10: shower cap (conf 0.10, 0.021 s)
+
+> Frame 1: shower cap (conf 0.10, 0.285 s)
+>
+> Frame 2: bathing cap (conf 0.09, 0.021 s)
+>
+> Frame 3: shower cap (conf 0.10, 0.021 s)
+>
+> Frame 4: shower cap (conf 0.09, 0.022 s)
+>
+> Frame 5: shower cap (conf 0.10, 0.023 s)
+>
+> Frame 6: shower cap (conf 0.10, 0.021 s)
+>
+> Frame 7: shower cap (conf 0.10, 0.021 s)
+>
+> Frame 8: shower cap (conf 0.10, 0.021 s)
+>
+> Frame 9: shower cap (conf 0.10, 0.021 s)
+>
+> Frame 10: shower cap (conf 0.10, 0.021 s)
 
 === SUMMARY ===
+
 googlenet: avg time = 0.036 s, avg conf = 0.115
+
 alexnet: avg time = 0.048 s, avg conf = 0.097
 
 
