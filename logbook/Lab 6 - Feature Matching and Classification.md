@@ -223,7 +223,8 @@ title('Template match by NCC');
 <p align="center"> <img src="Lab6assets/2d.png" /> </p>
 
 ###### Explanation
--> Comments:
+Comments:
+
 -> The rectangle tightly surrounds the true template location when the template exists with same scale and orientation.
 ​-> Repeating will show good localization only when the template is very similar; if appearance differs, peak correlation is lower and localization worsens, illustrating NCC’s sensitivity to exact appearance.
 
@@ -248,7 +249,8 @@ plot(points.selectStrongest(100));
 
 <p align="center"> <img src="Lab6assets/3a.png" /> </p>
 
--> Comments:
+Comments:
+
 -> The detected SIFT keypoints (green circles and crosses) concentrate on high‑contrast and textured regions such as the melting clocks, the tree trunk and the rocky structure on the right, while the smooth sky and flat ground have few or no points.
 -> Many keypoints have different circle sizes, showing that SIFT is capturing features over multiple scales: small circles on fine details (clock markings, edges) and larger circles on bigger structures (the white cloth, large clock outlines) - scale invariance.
 -> The distribution of points covers all main objects of interest in the painting, which means they are stable and repeatable across transformations.
@@ -343,13 +345,15 @@ hold off;
 The code above finds the _Nbest_ features using SIFT in each iage and overlay the features as cicles onto the image.
 
 >How successful do you think SIFT has managed to detect features for these two images (one is a quarter of the size of the other)?  What conclusions can you make?
->
+
+
 >#### Answers
 
 <p align="center"> <img src="Lab6assets/4a.png" /> </p>
 <p align="center"> <img src="Lab6assets/4b.png" /> </p>
 
--> Comments:
+Comments:
+
 -> SIFT has detected a very similar pattern of keypoints in both the original and the down‑scaled versions of the van Gogh painting: the strongest features cluster around the cafe facade table edges, window frames, cobblestones and bright stars in the sky. Although the second image is smaller, SIFT still finds points at corresponding visual structures, just with different circle radii, which reflects its built‑in scale invariance. This shows that SIFT can reliably locate stable, repeatable features across significant changes in image size, making these keypoints good candidates for later matching between different resolutions of the same scene.
 
 ## Task 4: SIFT matching - scale and rotation invariance
@@ -374,7 +378,8 @@ Comment on the results.
 
 <p align="center"> <img src="Lab6assets/4c.png" /> </p>
 
--> Comments:
+Comments:
+
 -> The code matches a very large number of SIFT features between the two scales, showing strong scale invariance, but the visualisation is cluttered because every match is drawn, making it hard to visually inspect individual correspondences.
 
 Now replace:
@@ -392,13 +397,14 @@ Comment on the results.
 
 <p align="center"> <img src="Lab6assets/4d.png" /> </p>
 
--> Comments:
+Comments:
+
 -> Using SIFT on the original and scaled images, the matcher finds a set of clear correspondences that mostly lie on meaningful structures such as the cafe facade, windows, tables, and the cobblestone street. The yellow lines radiating from the smaller, central image to the larger background image show that many features are consistently detected at both scales and correctly linked, confirming SIFT’s ability to provide strong scale‑invariant matches across the scene.
 
 
 >Next, rotate the smaller image by 20 degrees using the Matlab function **_imrotate( )_** and show that indeed SIFT is rotation invariant.
->
->#### Answers
+
+> #### Answers
 <p align="center"> <img src="Lab6assets/4e.png" /> </p>
 <p align="center"> <img src="Lab6assets/4f.png" /> </p>
 
@@ -518,10 +524,90 @@ and others.  You will find these methods listed [here](https://uk.mathworks.com/
 Let us now try to match two images from a video sequence of motorway traffic wtih cars moving bewteen frames.  The two still images are stored as *_'traffic_1.jpg'_* and *_'traffic_2.jpg'_*.  
 
 >Use the same program in Task 4 to find the matching points between these two frames using SIFT.   Comment on the results.
->
+
+>#### Answers
+
+<p align="center"> <img src="Lab6assets/5a.png" /> </p>
+
+Comments:
+
+-> Using SIFT on the two traffic images, the algorithm finds around reliable matches distributed across vehicles, lane markings and parts of the road surface. The red and cyan overlays on corresponding cars show that many keypoints are consistently tracked between frames, so SIFT provides a good basis for estimating vehicle motion and performing object tracking in this motorway sequence.
+
+```
+clear; close all; clc;
+
+I1 = imread('traffic_1.jpg');
+I2 = imread('traffic_2.jpg');
+
+f1 = im2gray(I1);
+f2 = im2gray(I2);
+
+% --- SIFT detection ---
+points1 = detectSIFTFeatures(f1);
+points2 = detectSIFTFeatures(f2);
+
+Nbest = 200;
+best1 = points1.selectStrongest(Nbest);
+best2 = points2.selectStrongest(Nbest);
+
+[features1, valid_points1] = extractFeatures(f1, best1);
+[features2, valid_points2] = extractFeatures(f2, best2);
+
+indexPairs = matchFeatures(features1, features2, 'Unique', true);
+
+matchedPoints1 = valid_points1(indexPairs(:,1), :);
+matchedPoints2 = valid_points2(indexPairs(:,2), :);
+
+figure(1);
+showMatchedFeatures(f1, f2, matchedPoints1, matchedPoints2);
+title(sprintf('Traffic frames – SIFT matches (N = %d)', ...
+    size(indexPairs,1)));
+
+
+```
+
 >Now change the algorithm from SIFT to SURF, and see what the differences in the results.
 
 What you have just done is to apply SIFT and SURF feature detection to perform object tracking between successive frames in a video.
+
+>#### Answers
+
+<p align="center"> <img src="Lab6assets/5b.png" /> </p>
+
+Comments:
+
+-> Using SURF on the two traffic frames, the algorithm finds reliable matches concentrated on vehicle bodies, lane markings, and road barriers, with red/cyan overlays clearly highlighting the same cars in both images. The match lines show consistent displacements corresponding to vehicle motion, indicating that SURF features are stable enough between successive video frames to support object tracking in motorway scenes. Compared to SIFT (which found more matches), SURF produces a cleaner set of correspondences on larger, high‑contrast structures, making it a faster and potentially more efficient choice for real‑time applications.
+
+```
+clear; close all; clc;
+
+I1 = imread('traffic_1.jpg');
+I2 = imread('traffic_2.jpg');
+
+f1 = im2gray(I1);
+f2 = im2gray(I2);
+
+% --- SURF detection (only this line changes) ---
+points1 = detectSURFFeatures(f1);
+points2 = detectSURFFeatures(f2);
+
+Nbest = 200;
+best1 = points1.selectStrongest(Nbest);
+best2 = points2.selectStrongest(Nbest);
+
+[features1, valid_points1] = extractFeatures(f1, best1);
+[features2, valid_points2] = extractFeatures(f2, best2);
+
+indexPairs = matchFeatures(features1, features2, 'Unique', true);
+
+matchedPoints1 = valid_points1(indexPairs(:,1), :);
+matchedPoints2 = valid_points2(indexPairs(:,2), :);
+
+figure(2);
+showMatchedFeatures(f1, f2, matchedPoints1, matchedPoints2);
+title(sprintf('Traffic frames – SURF matches (N = %d)', ...
+    size(indexPairs,1)));
+```
 
 
 ## Task 6: Image recognition using neural networks
