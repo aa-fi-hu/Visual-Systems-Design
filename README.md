@@ -18,7 +18,7 @@ The aim of our project was to design an interactive application that is able to 
       <b>Artify Live Webcam</b>
     </td>
     <td align="center" style="border: none;">
-      <img src="logbook/ProjectArtify/ProjectArtify/original.jpg" width="400px" alt="Original Photo"/><br />
+      <img src="logbook/ProjectArtify/artify_output.png" width="400px" alt="Original Photo"/><br />
       <b>Artified Image from Live Webcam (Sketch Style)</b>
     </td>
   </tr>
