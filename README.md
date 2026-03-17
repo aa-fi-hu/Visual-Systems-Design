@@ -11,15 +11,15 @@ The aim of our project was to design an interactive application that is able to 
 
 ## Evidence
 
-<table style="width: 100%; border-collapse: collapse; border: none;">
+<table style="width: 100%; border-collapse: collapse;">
   <tr>
     <td align="center" style="border: none;">
-      <img src="../logbook/ProjectArtify/artify.jepg" width="400px" alt="Original Photo"/><br />
-      <b>Live Video Page</b>
+      <img src="logbook/ProjectArtify/artify.jpeg" width="400px" alt="Artified Image"/><br />
+      <b>Artify Live Webcam</b>
     </td>
     <td align="center" style="border: none;">
-      <img src="ProjectArtify/artify_output.png" width="400px" alt="Artified Photo"/><br />
-      <b>Artified Result from Live Video (Sketch Style)</b>
+      <img src="logbook/ProjectArtify/ProjectArtify/original.jpg" width="400px" alt="Original Photo"/><br />
+      <b>Artified Image from Live Webcam (Sketch Style)</b>
     </td>
   </tr>
 </table>
