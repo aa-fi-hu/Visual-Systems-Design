@@ -14,11 +14,11 @@ The aim of our project was to design an interactive application that is able to 
 <table style="width: 100%; border-collapse: collapse; border: none;">
   <tr>
     <td align="center" style="border: none;">
-      <img src="Artify/artify.jepg" width="400px" alt="Original Photo"/><br />
+      <img src="ProjectArtify/artify.jepg" width="400px" alt="Original Photo"/><br />
       <b>Live Video Page</b>
     </td>
     <td align="center" style="border: none;">
-      <img src="Artify/artify_output.png" width="400px" alt="Artified Photo"/><br />
+      <img src="ProjectArtify/artify_output.png" width="400px" alt="Artified Photo"/><br />
       <b>Artified Result from Live Video (Sketch Style)</b>
     </td>
   </tr>
