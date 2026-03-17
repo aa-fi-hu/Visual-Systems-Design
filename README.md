@@ -14,7 +14,7 @@ The aim of our project was to design an interactive application that is able to 
 <table style="width: 100%; border-collapse: collapse; border: none;">
   <tr>
     <td align="center" style="border: none;">
-      <img src="ProjectArtify/artify.jepg" width="400px" alt="Original Photo"/><br />
+      <img src="../logbook/ProjectArtify/artify.jepg" width="400px" alt="Original Photo"/><br />
       <b>Live Video Page</b>
     </td>
     <td align="center" style="border: none;">
