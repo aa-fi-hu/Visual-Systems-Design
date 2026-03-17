@@ -10,8 +10,10 @@ The aim of our project was to design an interactive application that is able to 
 ## Instructions
 
 ## Evidence
-Video Proof: logbook/ProjectArtify/livevideoproof.mp4
-Link: https://youtu.be/fjStmO4bL64
+
+### Live Webcam to Artified Image
+
+Video Proof: logbook/ProjectArtify/livevideoproof.mp4 (https://youtu.be/fjStmO4bL64)
 
 
 
@@ -27,6 +29,8 @@ Link: https://youtu.be/fjStmO4bL64
     </td>
   </tr>
 </table>
+
+### Image to Artified Image with Timelapse Video
 
 ## Evaluation
 
