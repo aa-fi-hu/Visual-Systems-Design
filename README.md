@@ -11,6 +11,9 @@ The aim of our project was to design an interactive application that is able to 
 
 ## Evidence
 Video Proof: logbook/ProjectArtify/livevideoproof.mp4
+Link: https://youtu.be/fjStmO4bL64
+
+
 
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
