@@ -10,6 +10,7 @@ The aim of our project was to design an interactive application that is able to 
 ## Instructions
 
 ## Evidence
+Video Proof: logbook/ProjectArtify/livevideoproof.mp4
 
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
