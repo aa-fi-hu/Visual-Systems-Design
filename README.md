@@ -6,7 +6,11 @@
 # Artify: Painting Studio
 A MATLAB app that transforms photos and live webcam feeds into paintings, with an animated brushstroke timelapse that reveals the artwork stroke by stroke — like watching a real painter at work.
 
-MATLAB fle location: logbook/ProjectArtify/Artify.m
+
+MATLAB file location: 
+```
+logbook/ProjectArtify/Artify.m
+```
 
 ---
 ## Project Description
@@ -157,18 +161,17 @@ Both buttons are in the right panel under **EXPORT**.
 
 ### Installation & Launch
 
-1. Place both files in the same folder:
-   - `ArtifyApp.m`
-   - `ArtifyUI.m`
+1. Download the MATLAB file
+   - `Artify.m`
 
-2. In MATLAB, navigate to that folder and run:
-```matlab
-ArtifyApp
+MATLAB file location: 
+```
+logbook/ProjectArtify/Artify.m
 ```
 
-The app launches maximised and is ready to use.
+2. Open MATLAB and run the file:
 
----
+The app launches maximised and is ready to use.
 
 
 ## Evidence
@@ -177,7 +180,10 @@ The app launches maximised and is ready to use.
 
 Video Proof: (https://youtu.be/0NzBPbuUXgE)
 
-Video File Location: logbook/ProjectArtify/image.mp4 
+Video File Location: 
+```
+logbook/ProjectArtify/image.mp4 
+```
 
 #### Oil Paint
 
@@ -196,7 +202,10 @@ Video File Location: logbook/ProjectArtify/image.mp4
 
 ![Timelapse as GIF](logbook/ProjectArtify/a1.gif)
 
-Timelapse File Location: logbook/ProjectArtify/artify_timelapse1.mp4
+Timelapse File Location: 
+```
+logbook/ProjectArtify/artify_timelapse1.mp4
+```
 
 #### Watercolour
 
@@ -215,8 +224,10 @@ Timelapse File Location: logbook/ProjectArtify/artify_timelapse1.mp4
 
 ![Timelapse as GIF](logbook/ProjectArtify/a2.gif)
 
-Timelapse File Location: logbook/ProjectArtify/artify_timelapse2.mp4
-
+Timelapse File Location: 
+```
+logbook/ProjectArtify/artify_timelapse2.mp4
+```
 #### Impressionist
 
 <table style="width: 100%; border-collapse: collapse;">
@@ -234,7 +245,10 @@ Timelapse File Location: logbook/ProjectArtify/artify_timelapse2.mp4
 
 ![Timelapse as GIF](logbook/ProjectArtify/a3.gif)
 
-Timelapse File Location: logbook/ProjectArtify/artify_timelapse3.mp4
+Timelapse File Location: 
+```
+logbook/ProjectArtify/artify_timelapse3.mp4
+```
 
 #### Sketch
 
@@ -253,13 +267,19 @@ Timelapse File Location: logbook/ProjectArtify/artify_timelapse3.mp4
 
 ![Timelapse as GIF](logbook/ProjectArtify/a4.gif)
 
-Timelapse File Location: logbook/ProjectArtify/artify_timelapse4.mp4
+Timelapse File Location: 
+```
+logbook/ProjectArtify/artify_timelapse4.mp4
+```
 
 ### Live Webcam Mode
 
 Video Proof: (https://youtu.be/fjStmO4bL64)
 
-Video File Location: logbook/ProjectArtify/livevideoproof.mp4
+Video File Location: 
+```
+logbook/ProjectArtify/livevideoproof.mp4
+```
 
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
