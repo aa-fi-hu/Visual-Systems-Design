@@ -162,17 +162,15 @@ Both buttons are in the right panel under **EXPORT**.
 ### Installation & Launch
 
 1. Download the MATLAB file
-   - `Artify.m`
+   - `Artify.m``
+
+2. Open MATLAB and run the file
+
 
 MATLAB file location: 
 ```
 logbook/ProjectArtify/Artify.m
 ```
-
-2. Open MATLAB and run the file:
-
-The app launches maximised and is ready to use.
-
 
 ## Evidence
 
