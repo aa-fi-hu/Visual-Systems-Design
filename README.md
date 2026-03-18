@@ -10,7 +10,7 @@ MATLAB fle location: logbook/ProjectArtify/Artify.m
 
 ---
 ## Project Description
-The aim of our project was to design an interactive application that is able to perform live painting of stationary images as well as turn live video in to moving art. 
+The aim of our project was to design an interactive application that is able to perform live painting of stationary images with the options to save both the artified image and the timelapse video of the painting process, as well as turn live video in to moving art, which can be saved as images.
 
 
 ### Interface Overview
