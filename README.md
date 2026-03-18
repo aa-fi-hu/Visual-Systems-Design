@@ -6,6 +6,8 @@
 # Artify: Painting Studio
 A MATLAB app that transforms photos and live webcam feeds into paintings, with an animated brushstroke timelapse that reveals the artwork stroke by stroke — like watching a real painter at work.
 
+MATLAB fle location: logbook/ProjectArtify/Artify.m
+
 ---
 ## Project Description
 The aim of our project was to design an interactive application that is able to perform live painting of stationary images as well as turn live video in to moving art. 
