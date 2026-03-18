@@ -180,7 +180,7 @@ Video Proof: logbook/ProjectArtify/image.mp4 (https://youtu.be/0NzBPbuUXgE)
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
     <td align="center" style="border: none;">
-      <img src="logbook/ProjectArtify/test.jpeg" width="400px" alt="Original Image"/><br />
+      <img src="logbook/ProjectArtify/test.jpg" width="400px" alt="Original Image"/><br />
       <b>Artify Live Webcam</b>
     </td>
     <td align="center" style="border: none;">
@@ -195,7 +195,7 @@ Video Proof: logbook/ProjectArtify/image.mp4 (https://youtu.be/0NzBPbuUXgE)
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
     <td align="center" style="border: none;">
-      <img src="logbook/ProjectArtify/test.jpeg" width="400px" alt="Original Image"/><br />
+      <img src="logbook/ProjectArtify/test.jpg" width="400px" alt="Original Image"/><br />
       <b>Artify Live Webcam</b>
     </td>
     <td align="center" style="border: none;">
@@ -210,7 +210,7 @@ Video Proof: logbook/ProjectArtify/image.mp4 (https://youtu.be/0NzBPbuUXgE)
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
     <td align="center" style="border: none;">
-      <img src="logbook/ProjectArtify/test.jpeg" width="400px" alt="Original Image"/><br />
+      <img src="logbook/ProjectArtify/test.jpg" width="400px" alt="Original Image"/><br />
       <b>Artify Live Webcam</b>
     </td>
     <td align="center" style="border: none;">
@@ -220,12 +220,15 @@ Video Proof: logbook/ProjectArtify/image.mp4 (https://youtu.be/0NzBPbuUXgE)
   </tr>
 </table>
 
+![Timelapse as GIF](logbook/ProjectArtify/a1.gif)
+
+
 #### Sketch
 
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
     <td align="center" style="border: none;">
-      <img src="logbook/ProjectArtify/test.jpeg" width="400px" alt="Original Image"/><br />
+      <img src="logbook/ProjectArtify/test.jpg" width="400px" alt="Original Image"/><br />
       <b>Artify Live Webcam</b>
     </td>
     <td align="center" style="border: none;">
