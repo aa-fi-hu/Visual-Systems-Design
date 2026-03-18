@@ -112,7 +112,7 @@ The app will:
 
 A new image can also be uploaded at any time by pressing on the **Change Image** button.
 
-### Live Webcam Mode
+#### Live Webcam Mode
 
 <img src="logbook/ProjectArtify/live.png">
 
@@ -121,7 +121,7 @@ A new image can also be uploaded at any time by pressing on the **Change Image**
 3. Press **START** — the right canvas updates in real time
 4. Press **STOP** when done
 
-## Export
+#### Export
 
 <img src="logbook/ProjectArtify/export.png">
 
@@ -132,7 +132,7 @@ After the timelapse completes:
 
 Both buttons are in the right panel under **EXPORT**.
 
-## Tips
+#### Tips
 
 <img src="logbook/ProjectArtify/tips.png">
 
@@ -153,8 +153,6 @@ Both buttons are in the right panel under **EXPORT**.
 | Image Processing Toolbox | Required for all modes |
 | Computer Vision Toolbox | Required for Live Webcam mode only |
 
----
-
 ### Installation & Launch
 
 1. Place both files in the same folder:
@@ -173,26 +171,88 @@ The app launches maximised and is ready to use.
 
 ## Evidence
 
-### Live Webcam to Artified Image
+### Upload/Change Image Mode
 
-Video Proof: logbook/ProjectArtify/livevideoproof.mp4 (https://youtu.be/fjStmO4bL64)
+Video Proof: logbook/ProjectArtify/image.mp4 (https://youtu.be/0NzBPbuUXgE)
 
-
+#### Oil Paint
 
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
     <td align="center" style="border: none;">
-      <img src="logbook/ProjectArtify/artify.jpeg" width="400px" alt="Artified Image"/><br />
+      <img src="logbook/ProjectArtify/test.jpeg" width="400px" alt="Original Image"/><br />
       <b>Artify Live Webcam</b>
     </td>
     <td align="center" style="border: none;">
-      <img src="logbook/ProjectArtify/artify_output.png" width="400px" alt="Original Photo"/><br />
+      <img src="logbook/ProjectArtify/artify_output1.png" width="400px" alt="Artified Photo"/><br />
+      <b> Artified Image - Oil Paint Style </b>
+    </td>
+  </tr>
+</table>
+
+#### Watercolour
+
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td align="center" style="border: none;">
+      <img src="logbook/ProjectArtify/test.jpeg" width="400px" alt="Original Image"/><br />
+      <b>Artify Live Webcam</b>
+    </td>
+    <td align="center" style="border: none;">
+      <img src="logbook/ProjectArtify/artify_output2.png" width="400px" alt="Artified Photo"/><br />
+      <b> Artified Image - Watercolour Style </b>
+    </td>
+  </tr>
+</table>
+
+#### Impressionist
+
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td align="center" style="border: none;">
+      <img src="logbook/ProjectArtify/test.jpeg" width="400px" alt="Original Image"/><br />
+      <b>Artify Live Webcam</b>
+    </td>
+    <td align="center" style="border: none;">
+      <img src="logbook/ProjectArtify/artify_output3.png" width="400px" alt="Artified Photo"/><br />
+      <b> Artified Image - Impressionist Style </b>
+    </td>
+  </tr>
+</table>
+
+#### Sketch
+
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td align="center" style="border: none;">
+      <img src="logbook/ProjectArtify/test.jpeg" width="400px" alt="Original Image"/><br />
+      <b>Artify Live Webcam</b>
+    </td>
+    <td align="center" style="border: none;">
+      <img src="logbook/ProjectArtify/artify_output4.png" width="400px" alt="Artified Photo"/><br />
+      <b> Artified Image - Sketch Style </b>
+    </td>
+  </tr>
+</table>
+
+### Live Webcam Mode
+
+Video Proof: logbook/ProjectArtify/livevideoproof.mp4 (https://youtu.be/fjStmO4bL64)
+
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <td align="center" style="border: none;">
+      <img src="logbook/ProjectArtify/artify.jpeg" width="400px" alt="Original Image"/><br />
+      <b>Artify Live Webcam</b>
+    </td>
+    <td align="center" style="border: none;">
+      <img src="logbook/ProjectArtify/artify_output.png" width="400px" alt="Artified Photo"/><br />
       <b>Artified Image from Live Webcam (Sketch Style)</b>
     </td>
   </tr>
 </table>
 
-### Image to Artified Image with Timelapse Video
+---
 
 ## Evaluation
 
