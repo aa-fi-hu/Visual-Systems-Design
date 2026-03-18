@@ -295,6 +295,103 @@ logbook/ProjectArtify/livevideoproof.mp4
 ---
 
 ## Evaluation
+Artify is a MATLAB desktop application that transforms photographs and live webcam feeds into artistic paintings using four distinct visual styles. The application features a dark-themed three-panel GUI, real-time processing, an animated brushstroke timelapse that simulates the painting process and export functionality for both images and timelapse videos.
+
+### Strength and Achievements
+
+**Input Modes**
+- Live Webcam Mode
+  -  Captures frames from the system webcam at ~12 fps
+  -  Processes at 320px width for speed
+  -  Upscales result for to ensure better display
+  -  Real-time artistic effect applied to every frame using a MATLAB timer
+- Image Upload Mode
+  - Supports JPG, PNG, BMP, and TIFF formats
+  - Images automatically downscaled to 640px max dimension to ensure high performance
+  - Upload button changes to 'Change Image' after first load 
+
+**Painting Styles Functions**
+- Oil Paint
+  - posterised flat colour zones
+  - edge detection outlines burned back in
+  - high saturation
+  - simulates thick layered pigment
+- Watercolour
+  - HSV-space colour quantisation into wash regions
+  - paper grain texture
+  - soft pigment pooling at edges
+  - white paper bleed in highlights
+- Impressionist
+  - tiled colour dab canvas
+  - dual directional motion blur at 35° and 125°
+  - warm palette shift
+  - strong saturation boost
+- Sketch
+  - dodge-based line extraction
+  - spatial warp for hand tremor imitation
+  - pressure variation noise
+  - shading layer with smudging
+  - warm cream paper tint
+
+**Brushstroke Timelapse Features**
+- 128 strokes planned in 3 passes:
+  - 18 large background washes
+  - 40 medium strokes
+  - 70 fine detail strokes
+- Stroke angles follow the Sobel gradient field of the final image
+  - ensure strokes align with natural contours
+- Each stroke is progressively drawn from tail to tip over 3 timer ticks
+  - a style-appropriate animated tool icon following the brush tip is used
+- The final painted image is hidden underneath a mask
+  - strokes unmask it region by region to ensure colours are always correct
+- Ends with a 25-step ease-in-out blend into the final image
+  - ensures remaining gaps are filled 
+
+**Tool Icons**
+- Pencil Sketch: animated pencil with yellow body, wood taper, graphite tip and pink eraser
+- Oil Paint: flat rectangular bristle head with ferrule and wooden handle
+- Watercolor: round tapered brush with pointed tip, blue handle
+- Impressionist: fan brush with 7 splayed tines
+
+**Export Functions**
+- Save Image
+  - captures the current artistic output canvas as PNG or JPG
+- Save Timelapse
+  - exports the full animation (stroke frames + fade frames) as MP4 or AVI at 24 fps
+
+#### Performance
+- All image effects are fully vectorised, thus needing no pixel-by-pixel loops
+- Each effect operates on full image matrices using MATLAB's built-in array operations, edge filters and colour space transforms
+- The timelapse system is timer-driven rather than loop-driven, meaning MATLAB returns to its event queue between each stroke tick, guaranteeing every frame is rendered to screen without batching.
+
+Key design decisions made to ensure high performance:
+- Webcam mode processes at 320px (not full resolution)
+  - upscales only for display
+- Brushstroke rendering uses a tight rotated bounding box per stroke
+  - only the affected pixels are touched
+- The per-tick composite redraws only the dirty region of the current stroke
+  - not redrawn on the full image
+- Image display during the timelapse uses CData updates on a pre-created image handle
+  - not based on repeated imshow calls
+
+#### Limitations & Potential Improvements
+- Have to wait for the whole process to finish before seeing the final image, makes it time consuming to personalise the colour boost and brush intensity settings
+  - a quick preview image should pop-up before the image starts processing
+- Watercolor and Impressionist effects could be more photorealistic
+  - can be achieved with longer processing times (e.g., using Kuwahara filter for oil paint and diffusion for watercolor)
+- Stroke placement is random within gradient-aligned angles not and could be made to be more natural and realistic
+  - implementing a smarter algorithm that could sample colours from underpainting regions
+- Webcam performance drops with complex styles like Oil Paint and Watercolor)
+  - addition of style-specific resolution caps
+- No undo functionality, once processing starts, the only option is STOP
+  - inclucing undo and redo buttons
+- Timelapse does not cover 100% of pixels by strokes alone
+  - for full coverage, gap-fill fade is needed
+- Only images captured during live webcam can be artified not the entire recording, and there is no option to save the original picture that was captured for artification
+  - having an option to record video through the live webcam and convert the entire video into an artified video
+
+#### Summary 
+Artify successfully delivers a functional painting studio application within MATLAB. The interface looks professional and is responsive with the four painting styles being able to produce visually distinct outputs. The animated timelapse feature also provides an engaging simulation of the painting process. Moreover, the most technically challenging component — the reveal-mask timelapse feature — effectively solves the core problem of showing correct colours during animation without a jarring cut to the final image. The application however can be improved through the addition of other buttons such as redo, undo and preview image button. The process of artifying the images can also be improved to result in more photorealistic outputs, as well as showing a more natural painting process for the timelapse feature. 
 
 
 ## Personal Statements
