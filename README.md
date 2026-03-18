@@ -173,7 +173,9 @@ The app launches maximised and is ready to use.
 
 ### Upload/Change Image Mode
 
-Video Proof: logbook/ProjectArtify/image.mp4 (https://youtu.be/0NzBPbuUXgE)
+Video Proof: (https://youtu.be/0NzBPbuUXgE)
+
+Video File Location: logbook/ProjectArtify/image.mp4 
 
 #### Oil Paint
 
@@ -190,6 +192,10 @@ Video Proof: logbook/ProjectArtify/image.mp4 (https://youtu.be/0NzBPbuUXgE)
   </tr>
 </table>
 
+![Timelapse as GIF](logbook/ProjectArtify/a1.gif)
+
+Timelapse File Location: logbook/ProjectArtify/artify_timelapse1.mp4
+
 #### Watercolour
 
 <table style="width: 100%; border-collapse: collapse;">
@@ -204,6 +210,10 @@ Video Proof: logbook/ProjectArtify/image.mp4 (https://youtu.be/0NzBPbuUXgE)
     </td>
   </tr>
 </table>
+
+![Timelapse as GIF](logbook/ProjectArtify/a2.gif)
+
+Timelapse File Location: logbook/ProjectArtify/artify_timelapse2.mp4
 
 #### Impressionist
 
@@ -220,8 +230,9 @@ Video Proof: logbook/ProjectArtify/image.mp4 (https://youtu.be/0NzBPbuUXgE)
   </tr>
 </table>
 
-![Timelapse as GIF](logbook/ProjectArtify/a1.gif)
+![Timelapse as GIF](logbook/ProjectArtify/a3.gif)
 
+Timelapse File Location: logbook/ProjectArtify/artify_timelapse3.mp4
 
 #### Sketch
 
@@ -238,9 +249,15 @@ Video Proof: logbook/ProjectArtify/image.mp4 (https://youtu.be/0NzBPbuUXgE)
   </tr>
 </table>
 
+![Timelapse as GIF](logbook/ProjectArtify/a4.gif)
+
+Timelapse File Location: logbook/ProjectArtify/artify_timelapse4.mp4
+
 ### Live Webcam Mode
 
-Video Proof: logbook/ProjectArtify/livevideoproof.mp4 (https://youtu.be/fjStmO4bL64)
+Video Proof: (https://youtu.be/fjStmO4bL64)
+
+Video File Location: logbook/ProjectArtify/livevideoproof.mp4
 
 <table style="width: 100%; border-collapse: collapse;">
   <tr>
